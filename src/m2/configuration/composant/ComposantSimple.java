@@ -13,16 +13,6 @@ public abstract class ComposantSimple implements ComposantAbstrait{
 		private InterfaceAPort entree;
 		private InterfaceAPort sortie;
 		
-		
-		public ComposantSimple(ContrainteTechnique ct, List<Propriete> proprietes,
-				InterfaceAPort entree, InterfaceAPort sorti) {
-			super();
-			this.ct = ct;
-			this.proprietes = proprietes;
-			this.entree = entree;
-			this.sortie = sorti;
-		}
-		
 		public void lancer(PointConnexion p){
 			// TODO implement this
 		}
