@@ -1,5 +1,8 @@
 package m2.configuration.interfaces.service;
 
-public interface Service {
+import m2.configuration.ComposantAbstrait;
+import m2.configuration.interfaces.PointConnexion;
+
+public abstract class Service extends PointConnexion implements ComposantAbstrait{
 
 }
