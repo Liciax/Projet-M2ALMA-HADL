@@ -1,6 +1,7 @@
 package m2.configuration.interfaces.port;
 
-public abstract class Port {
+import m2.configuration.interfaces.PointConnexion;
+
+public abstract class Port extends PointConnexion{
 	
-	private String val;
 }

@@ -1,5 +1,8 @@
 package m2.configuration.interfaces.role;
 
-public interface Role {
+import m2.configuration.interfaces.PointConnexion;
 
+public abstract class Role extends PointConnexion{
+
+	
 }
