@@ -1,5 +1,5 @@
 package m2.configuration.connecteur;
 
-public class Glue {
+public abstract class Glue {
 
 }
