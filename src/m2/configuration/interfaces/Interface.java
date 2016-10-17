@@ -1,5 +1,7 @@
 package m2.configuration.interfaces;
 
-public interface Interface {
+import m2.configuration.ComposantAbstrait;
+
+public abstract class Interface implements ComposantAbstrait{
 
 }

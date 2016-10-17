@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import m2.configuration.interfaces.port.*;
 import m2.configuration.interfaces.service.Service;
 
-public abstract class InterfaceAPort implements Interface {
+public abstract class InterfaceAPort extends Interface {
 
 	private ArrayList<Port> ports;
 	private ArrayList<Service> services;
