@@ -1,5 +1,5 @@
 package m2.configuration.interfaces.service;
 
-public interface Service {
+public abstract class Service {
 
 }

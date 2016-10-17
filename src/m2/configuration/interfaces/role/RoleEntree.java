@@ -1,5 +1,5 @@
 package m2.configuration.interfaces.role;
 
-public class RoleEntree extends Role {
+public abstract class RoleEntree extends Role {
 
 }
