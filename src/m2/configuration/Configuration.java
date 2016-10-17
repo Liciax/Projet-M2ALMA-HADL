@@ -1,5 +1,6 @@
 package m2.configuration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import m2.configuration.interfaces.PointConnexion;
@@ -8,6 +9,7 @@ public abstract class Configuration implements ComposantAbstrait{
 
 	private HashMap<PointConnexion, PointConnexion> liaisons; //associe les sorties avec les entrées correspondantes
 	private HashMap<PointConnexion, ComposantAbstrait> entrees; //pour un port/role donné, donne le ComposantAbstrait associe
+	private ArrayList<ComposantAbstrait> listeComposants;
 	
 	public void notifier(PointConnexion p) {
 		liaisons.get(p).setVal(p.getVal());

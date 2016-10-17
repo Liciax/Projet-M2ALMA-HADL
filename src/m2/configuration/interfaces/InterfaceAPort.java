@@ -9,4 +9,6 @@ public abstract class InterfaceAPort extends Interface {
 	private ArrayList<Port> ports;
 	private ArrayList<Service> services;
 	
+	
+	
 }

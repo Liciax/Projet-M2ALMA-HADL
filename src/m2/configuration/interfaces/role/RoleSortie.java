@@ -7,9 +7,7 @@ public abstract class RoleSortie extends Role {
 
 	private ObserveurdeTransit obs;
 
-	@Override
-	public void lancer(PointConnexion p) {
-		// TODO Auto-generated method stub
-		
+	public void notifierEnvoi() {
+		obs.notifier(this);
 	}
 }

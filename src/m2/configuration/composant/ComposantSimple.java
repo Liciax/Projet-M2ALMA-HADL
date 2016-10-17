@@ -20,7 +20,7 @@ public abstract class ComposantSimple implements ComposantAbstrait{
 			this.ct = ct;
 			this.proprietes = proprietes;
 			this.entree = entree;
-			this.sorti = sorti;
+			this.sortie = sorti;
 		}
 		
 		public void lancer(PointConnexion p){

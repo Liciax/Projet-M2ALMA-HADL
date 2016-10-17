@@ -1,6 +1,7 @@
 package m2.configuration.connecteur;
 
 import m2.configuration.ComposantAbstrait;
+import m2.configuration.interfaces.InterfaceARole;
 import m2.configuration.interfaces.PointConnexion;
 
 public abstract class Connecteur implements ComposantAbstrait{
@@ -22,5 +23,4 @@ public abstract class Connecteur implements ComposantAbstrait{
 	public void lancer(PointConnexion p){
 		// TODO implement this
 	}
->>>>>>> 85e992e294a73e0f72dfb2aea98c101ff5e841d6
 }

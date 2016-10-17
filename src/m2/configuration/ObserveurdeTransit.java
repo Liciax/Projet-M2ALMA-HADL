@@ -1,6 +1,6 @@
 package m2.configuration;
 
-import m2.configuration.interfaces.port.PortSortie;
+import m2.configuration.interfaces.PointConnexion;
 
 public class ObserveurdeTransit {
 	
@@ -11,8 +11,16 @@ public class ObserveurdeTransit {
 		this.configObservant = configObservant;
 	}
 	
-	public void notifier(PortSortie p) {
+	public void notifier(PointConnexion p) {
 		configObservant.notifier(p);
+	}
+
+	public Configuration getConfigObservant() {
+		return configObservant;
+	}
+
+	public void setConfigObservant(Configuration configObservant) {
+		this.configObservant = configObservant;
 	}
 
 }
