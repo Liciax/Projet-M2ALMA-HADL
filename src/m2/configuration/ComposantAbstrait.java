@@ -1,5 +1,5 @@
 package m2.configuration;
 
-public class ComposantAbstrait {
+public abstract class ComposantAbstrait {
 
 }

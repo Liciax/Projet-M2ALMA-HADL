@@ -1,5 +1,5 @@
 package m2.configuration.composant;
 
-public class ContrainteTechnique {
+public abstract class ContrainteTechnique {
 
 }

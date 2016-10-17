@@ -1,5 +1,5 @@
 package m2.configuration.composant;
 
-public class ProprieteFonctionnelle implements Propriete {
+public abstract class ProprieteFonctionnelle implements Propriete {
 
 }
