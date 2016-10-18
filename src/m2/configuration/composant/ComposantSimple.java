@@ -14,6 +14,10 @@ public abstract class ComposantSimple implements ComposantAbstrait{
 		private InterfaceAPort sortie;
 		
 		public void lancer(PointConnexion p){
-			// TODO implement this
+			switch (p.getId()) {
+			default:
+				System.out.println("lancer not implemented for ComposantSimple");
+				break;
+			}
 		}
 }

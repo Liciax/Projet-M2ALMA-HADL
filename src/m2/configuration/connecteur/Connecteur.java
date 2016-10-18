@@ -12,6 +12,11 @@ public abstract class Connecteur implements ComposantAbstrait{
 	private InterfaceARole to;
 
 	public void lancer(PointConnexion p){
-		// TODO implement this
+		String result = glue.traduit(p);
+		switch (p.getId()) {
+		default:
+			System.out.println("lancer not implemented for Connecteur");
+			break;
+		}
 	}
 }
