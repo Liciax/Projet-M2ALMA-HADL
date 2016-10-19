@@ -2,8 +2,8 @@ package m2.configuration.interfaces;
 
 public abstract class PointConnexion {
 
-	private String val;
-	private String id;
+	protected String val;
+	protected String id;
 
 	public String getVal() {
 		return val;

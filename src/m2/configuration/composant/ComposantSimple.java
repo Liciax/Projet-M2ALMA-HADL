@@ -1,5 +1,6 @@
 package m2.configuration.composant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import m2.configuration.ComposantAbstrait;
@@ -8,10 +9,15 @@ import m2.configuration.interfaces.PointConnexion;
 
 public abstract class ComposantSimple implements ComposantAbstrait{
 
-		private ContrainteTechnique ct;
-		private List<Propriete> proprietes;
-		private InterfaceAPort entree;
-		private InterfaceAPort sortie;
+		protected List<ContrainteTechnique> ct;
+		protected List<Propriete> proprietes;
+		protected InterfaceAPort entree;
+		protected InterfaceAPort sortie;
+		
+		public ComposantSimple() {
+			ct = new ArrayList<ContrainteTechnique>();
+			proprietes = new ArrayList<Propriete>();
+		}
 		
 		public void lancer(PointConnexion p){
 			switch (p.getId()) {
@@ -20,4 +26,30 @@ public abstract class ComposantSimple implements ComposantAbstrait{
 				break;
 			}
 		}
+
+		public InterfaceAPort getEntree() {
+			return entree;
+		}
+
+		public void setEntree(InterfaceAPort entree) {
+			this.entree = entree;
+		}
+
+		public InterfaceAPort getSortie() {
+			return sortie;
+		}
+
+		public void setSortie(InterfaceAPort sortie) {
+			this.sortie = sortie;
+		}
+
+		public List<ContrainteTechnique> getCt() {
+			return ct;
+		}
+
+		public List<Propriete> getProprietes() {
+			return proprietes;
+		}
+		
+		
 }

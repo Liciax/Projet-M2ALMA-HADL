@@ -2,7 +2,7 @@ package m2.configuration.interfaces.role;
 
 import m2.configuration.interfaces.PointConnexion;
 
-public abstract class RoleEntree extends Role {
+public class RoleEntree extends Role {
 
 
 	@Override

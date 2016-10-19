@@ -6,11 +6,12 @@ import m2.configuration.interfaces.PointConnexion;
 
 public abstract class Connecteur implements ComposantAbstrait{
 	
-	private TypeConnecteur type;
-	private Glue glue;
-	private InterfaceARole from;
-	private InterfaceARole to;
+	protected TypeConnecteur type;
+	protected Glue glue;
+	protected InterfaceARole from;
+	protected InterfaceARole to;
 
+	
 	public void lancer(PointConnexion p){
 		String result = glue.traduit(p);
 		switch (p.getId()) {
@@ -19,4 +20,46 @@ public abstract class Connecteur implements ComposantAbstrait{
 			break;
 		}
 	}
+
+
+	public TypeConnecteur getType() {
+		return type;
+	}
+
+
+	public void setType(TypeConnecteur type) {
+		this.type = type;
+	}
+
+
+	public Glue getGlue() {
+		return glue;
+	}
+
+
+	public void setGlue(Glue glue) {
+		this.glue = glue;
+	}
+
+
+	public InterfaceARole getFrom() {
+		return from;
+	}
+
+
+	public void setFrom(InterfaceARole from) {
+		this.from = from;
+	}
+
+
+	public InterfaceARole getTo() {
+		return to;
+	}
+
+
+	public void setTo(InterfaceARole to) {
+		this.to = to;
+	}
+	
+	
 }
