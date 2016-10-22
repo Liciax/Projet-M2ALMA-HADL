@@ -1,14 +1,13 @@
 package m2.configuration.interfaces.role;
 
 import m2.configuration.ObserveurdeTransit;
-import m2.configuration.interfaces.PointConnexion;
 
 public class RoleSortie extends Role {
 
 	private ObserveurdeTransit obs;
 
-	public RoleSortie(ObserveurdeTransit obs) {
-		super();
+	public RoleSortie(String nom, ObserveurdeTransit obs) {
+		super(nom);
 		this.obs = obs;
 	}
 
@@ -17,7 +16,7 @@ public class RoleSortie extends Role {
 	}
 
 	@Override
-	public void lancer(PointConnexion p) {
+	public void lancer(String p) {
 		// TODO Auto-generated method stub
 		
 	}

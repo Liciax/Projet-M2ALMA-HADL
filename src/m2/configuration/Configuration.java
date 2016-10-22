@@ -23,11 +23,11 @@ public abstract class Configuration implements ComposantAbstrait{
 	
 	public void notifier(PointConnexion p) {
 		liaisons.get(p).setVal(p.getVal());
-		entrees.get(liaisons.get(p)).lancer(liaisons.get(p));
+		entrees.get(liaisons.get(p)).lancer(liaisons.get(p).getId());
 	}
 
 	
-	public void lancer(PointConnexion p){
+	public void lancer(String p){
 		// TODO implement this
 	}
 
@@ -59,6 +59,10 @@ public abstract class Configuration implements ComposantAbstrait{
 		this.interfConf = interfConf;
 	}
 	
+	public List<ComposantAbstrait> getListeComposants() {
+		return listeComposants;
+	}
+
 	
 	
 	

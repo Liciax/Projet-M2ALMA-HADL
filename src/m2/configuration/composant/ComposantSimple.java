@@ -5,7 +5,6 @@ import java.util.List;
 
 import m2.configuration.ComposantAbstrait;
 import m2.configuration.interfaces.InterfaceAPort;
-import m2.configuration.interfaces.PointConnexion;
 
 public abstract class ComposantSimple implements ComposantAbstrait{
 
@@ -19,8 +18,8 @@ public abstract class ComposantSimple implements ComposantAbstrait{
 			proprietes = new ArrayList<Propriete>();
 		}
 		
-		public void lancer(PointConnexion p){
-			switch (p.getId()) {
+		public void lancer(String p){
+			switch (p) {
 			default:
 				System.out.println("lancer not implemented for ComposantSimple");
 				break;

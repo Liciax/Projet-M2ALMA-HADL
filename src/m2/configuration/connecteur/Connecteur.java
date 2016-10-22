@@ -2,7 +2,6 @@ package m2.configuration.connecteur;
 
 import m2.configuration.ComposantAbstrait;
 import m2.configuration.interfaces.InterfaceARole;
-import m2.configuration.interfaces.PointConnexion;
 
 public abstract class Connecteur implements ComposantAbstrait{
 	
@@ -12,9 +11,9 @@ public abstract class Connecteur implements ComposantAbstrait{
 	protected InterfaceARole to;
 
 	
-	public void lancer(PointConnexion p){
-		String result = glue.traduit(p);
-		switch (p.getId()) {
+	public void lancer(String p){
+		String result = glue.traduit(from.getPoint(p));
+		switch (p) {
 		default:
 			System.out.println("lancer not implemented for Connecteur");
 			break;

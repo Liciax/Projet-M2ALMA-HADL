@@ -10,9 +10,18 @@ public class InterfaceAPort extends Interface {
 	private ArrayList<Service> services;
 	
 	@Override
-	public void lancer(PointConnexion p) {
+	public void lancer(String p) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public PointConnexion getPoint(String id){
+		for (Port port : ports) {
+			if(port.getId().equals(id)){
+				return port;
+			}
+		}
+		return null;
 	}
 
 	public ArrayList<Port> getPorts() {

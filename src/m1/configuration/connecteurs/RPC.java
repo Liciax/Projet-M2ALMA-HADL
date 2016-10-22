@@ -14,9 +14,11 @@ public class RPC extends Connecteur{
 
 	public RPC(ObserveurdeTransit obs) {
 		this.setFrom(new InterfaceARole());
-		this.getFrom().getRoles().add(new RoleSortie(obs));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntree("entréeRPCdeClient"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntree("entréeRPCdeServeur"));//caller, requis
 		this.setTo(new InterfaceARole());
-		this.getTo().getRoles().add(new RoleEntree());//called, fourni
+		this.getTo().getRoles().add(new RoleSortie("SortieRPCdeClient",obs));//called, fourni
+		this.getTo().getRoles().add(new RoleSortie("SortieRPCdeServeur",obs));//called, fourni
 		this.setGlue(new GlueRPC());
 	}
 

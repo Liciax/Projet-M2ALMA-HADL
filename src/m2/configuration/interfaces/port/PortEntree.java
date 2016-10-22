@@ -1,7 +1,5 @@
 package m2.configuration.interfaces.port;
 
-import m2.configuration.interfaces.PointConnexion;
-
 public class PortEntree extends Port {
 
 	public PortEntree(String nom) {
@@ -10,7 +8,7 @@ public class PortEntree extends Port {
 	}
 
 	@Override
-	public void lancer(PointConnexion p) {
+	public void lancer(String p) {
 		// TODO Auto-generated method stub
 		
 	}

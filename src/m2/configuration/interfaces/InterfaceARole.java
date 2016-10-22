@@ -2,6 +2,7 @@ package m2.configuration.interfaces;
 
 import java.util.ArrayList;
 
+import m2.configuration.interfaces.port.Port;
 import m2.configuration.interfaces.role.Role;
 
 public class InterfaceARole extends Interface {
@@ -9,9 +10,18 @@ public class InterfaceARole extends Interface {
 	private ArrayList<Role> roles;
 
 	@Override
-	public void lancer(PointConnexion p) {
+	public void lancer(String p) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public PointConnexion getPoint(String id){
+		for (Role role : roles) {
+			if(role.getId().equals(id)){
+				return role;
+			}
+		}
+		return null;
 	}
 
 	public ArrayList<Role> getRoles() {
