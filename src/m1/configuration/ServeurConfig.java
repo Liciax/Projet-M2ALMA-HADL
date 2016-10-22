@@ -9,6 +9,7 @@ public class ServeurConfig extends Configuration {
 
 	public ServeurConfig() {
 		super();
+		this.id = "ConfigServeur";
 		ObserveurdeTransit observServ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de données
 		this.getInterfConf().getPorts().add(new PortEntree("EntreeConfServ"));
 		this.getInterfConf().getPorts().add(new PortSortie("SortieConfServ",observServ));
@@ -16,4 +17,7 @@ public class ServeurConfig extends Configuration {
 		//TODO : Partie basse de m1
 	}
 
+	public void lancer(String p){
+		System.out.println("on est bien arrivé pour le moment");
+	}
 }

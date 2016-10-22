@@ -13,6 +13,7 @@ public abstract class Configuration implements ComposantAbstrait{
 	protected HashMap<PointConnexion, ComposantAbstrait> entrees; //pour un port/role donné, donne le ComposantAbstrait associe
 	protected List<ComposantAbstrait> listeComposants;
 	protected InterfaceAPort interfConf;
+	protected String id;
 	
 	public Configuration() {
 		this.entrees = new HashMap<PointConnexion, ComposantAbstrait>();
@@ -62,6 +63,14 @@ public abstract class Configuration implements ComposantAbstrait{
 	
 	public List<ComposantAbstrait> getListeComposants() {
 		return listeComposants;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	

@@ -13,6 +13,7 @@ public class Config extends Configuration{
 
 	public Config() {
 		super();
+		this.id = "ConfigGenerale";
 		ObserveurdeTransit observ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de données
 		this.getInterfConf().getPorts().add(new PortEntree("EntreeConf"));
 		this.getInterfConf().getPorts().add(new PortSortie("SortieConf",observ));
@@ -23,22 +24,29 @@ public class Config extends Configuration{
 		
 		RPC rpc = new RPC(observ);
 		this.listeComposants.add(rpc);
-		this.liaisons.put(cli.getSortie().getPoint("SortieClient"), rpc.getFrom().getPoint("EntréeRPCdeClient"));
-		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeClient"), cli.getEntree().getPoint("EntréeClient"));
+		this.liaisons.put(cli.getSortie().getPoint("SortieClient"), rpc.getFrom().getPoint("EntréeRPCdeClient"));//Client->RPC
+		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeClient"), cli.getEntree().getPoint("EntréeClient"));//RCP->Client
 		
 		Serveur serv = new Serveur(observ);
 		this.listeComposants.add(serv);
-		this.liaisons.put(serv.getSortie().getPoint("SortieServeur"), rpc.getFrom().getPoint("EntréeRPCdeServeur"));
-		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeServeur"), serv.getEntree().getPoint("EntréeServeur"));
+		this.liaisons.put(serv.getSortie().getPoint("SortieServeur"), rpc.getFrom().getPoint("EntréeRPCdeServeur"));//Serveur->RCP
+		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeServeur"), serv.getEntree().getPoint("EntréeServeur"));//RCP->Serveur
 		
 
+		ServeurConfig confServ = new ServeurConfig();//config serveur
+		this.listeComposants.add(confServ);
+		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entrée de ConfServ
+		
+		
+		
 		this.entrees.put(cli.getEntree().getPoint("EntréeClient"), cli);
 		this.entrees.put(rpc.getFrom().getPoint("EntréeRPCdeClient"), rpc);
 		this.entrees.put(rpc.getFrom().getPoint("EntréeRPCdeServeur"), rpc);
 		this.entrees.put(serv.getEntree().getPoint("EntréeServeur"), serv);
-
-		ServeurConfig confServ = new ServeurConfig();//config serveur
-		this.listeComposants.add(confServ);
+		this.entrees.put(confServ.getInterfConf().getPoint("EntreeConfServ"), confServ);
+		
+		
+		
 		
 		//3 bindings: entre serveur et serveurConfig, entre Serveur et config et ???
 	}
