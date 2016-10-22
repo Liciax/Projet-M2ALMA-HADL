@@ -24,9 +24,15 @@ public class Client extends ComposantSimple{
 	}
 	
 	public void lancer(String p){
+		System.out.println("Client : signal de la configuration reçu: le port " + p + " viens de recevoir un message qu'il faut traiter");
 		switch (p) {
+		case "EntréeClient" :
+			String command = this.getEntree().getPoint(p).getVal();
+			System.out.println("Client : la commande '" +command+ "' est arrivée dans le port EntréeClient du client, elle doit donc etre traitée et envoyé vers le port SortieClient" );
+			this.getSortie().getPoint("SortieClient").setVal(command);
+			break;
 		default:
-			System.out.println("lancer not implemented for Client");
+			System.out.println("lancer not implemented for this port of the Client");
 			break;
 		}
 	}

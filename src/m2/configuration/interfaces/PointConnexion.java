@@ -10,6 +10,7 @@ public abstract class PointConnexion {
 	}
 
 	public void setVal(String val) {
+		System.out.println("PortEntrée/RoleEntrée : ecriture dans le port " + id + " de la commande " + val);
 		this.val = val;
 	}
 

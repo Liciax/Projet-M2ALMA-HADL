@@ -18,10 +18,11 @@ public abstract class Configuration implements ComposantAbstrait{
 		this.entrees = new HashMap<PointConnexion, ComposantAbstrait>();
 		this.liaisons = new HashMap<PointConnexion, PointConnexion>();
 		this.listeComposants = new ArrayList<ComposantAbstrait>();
-		interfConf = new InterfaceAPort();
+		this.interfConf = new InterfaceAPort();
 	}
 	
 	public void notifier(PointConnexion p) {
+		System.out.println("Configuration : " +p.getId() + " souhaite envoyer un message. envoi du message au port correspondant: " + liaisons.get(p).getId() + " et signalement au ComposantAbstrait correspondant");
 		liaisons.get(p).setVal(p.getVal());
 		entrees.get(liaisons.get(p)).lancer(liaisons.get(p).getId());
 	}

@@ -35,7 +35,7 @@ public class Config extends Configuration{
 		this.entrees.put(cli.getEntree().getPoint("EntréeClient"), cli);
 		this.entrees.put(rpc.getFrom().getPoint("EntréeRPCdeClient"), rpc);
 		this.entrees.put(rpc.getFrom().getPoint("EntréeRPCdeServeur"), rpc);
-		this.entrees.put(serv.getEntree().getPoint("EntréeClient"), serv);
+		this.entrees.put(serv.getEntree().getPoint("EntréeServeur"), serv);
 
 		ServeurConfig confServ = new ServeurConfig();//config serveur
 		this.listeComposants.add(confServ);

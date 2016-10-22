@@ -9,6 +9,13 @@ public class InterfaceAPort extends Interface {
 	private ArrayList<Port> ports;
 	private ArrayList<Service> services;
 	
+	
+	public InterfaceAPort() {
+		super();
+		this.ports = new ArrayList<Port>();
+		this.services = new ArrayList<Service>();
+	}
+
 	@Override
 	public void lancer(String p) {
 		// TODO Auto-generated method stub

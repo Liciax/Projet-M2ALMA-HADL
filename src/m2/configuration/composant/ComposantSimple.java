@@ -7,7 +7,7 @@ import m2.configuration.ComposantAbstrait;
 import m2.configuration.interfaces.InterfaceAPort;
 
 public abstract class ComposantSimple implements ComposantAbstrait{
-
+	
 		protected List<ContrainteTechnique> ct;
 		protected List<Propriete> proprietes;
 		protected InterfaceAPort entree;
@@ -16,6 +16,8 @@ public abstract class ComposantSimple implements ComposantAbstrait{
 		public ComposantSimple() {
 			ct = new ArrayList<ContrainteTechnique>();
 			proprietes = new ArrayList<Propriete>();
+			this.entree = new InterfaceAPort();
+			this.sortie = new InterfaceAPort();
 		}
 		
 		public void lancer(String p){

@@ -10,6 +10,12 @@ public class RoleSortie extends Role {
 		super(nom);
 		this.obs = obs;
 	}
+	
+	public void setVal(String val) {
+		System.out.println("RoleSortie : ecriture dans le role " + id + "de la commande '" + val + "', delegation de la suite a la configuration");
+		this.val = val;
+		this.notifierEnvoi();
+	}
 
 	public void notifierEnvoi() {
 		obs.notifier(this);

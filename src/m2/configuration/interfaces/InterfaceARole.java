@@ -9,6 +9,12 @@ public class InterfaceARole extends Interface {
 
 	private ArrayList<Role> roles;
 
+	
+	public InterfaceARole() {
+		super();
+		this.roles = new ArrayList<Role>();
+	}
+
 	@Override
 	public void lancer(String p) {
 		// TODO Auto-generated method stub
