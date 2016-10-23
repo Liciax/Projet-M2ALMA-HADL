@@ -14,6 +14,7 @@ public class ServeurConfig extends Configuration {
 		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConfServ"));
 		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConfServ",observServ));
 		
+		
 		//TODO : Partie basse de m1
 	}
 

@@ -18,8 +18,12 @@ public class Database extends ComposantSimple {
 		this.getSortie().getPorts().add(new PortSortieConcret("Send_QueryIntPort", obs));//envoyer reponse Query
 	}
 	
-	public void ReponseSecurité(String identifiants) {
-		
+	public String ReponseSecurité(String identifiants) {
+		return "true";//on considere que toute demande de connexion est acceptee
+	}
+	
+	public String ReponseQuery(String identifiants) {
+		return "Resultat de la query";//Mock de la connexion vers une vraie DB avec de vraies queries
 	}
 	
 	public void lancer(String p){
@@ -31,7 +35,7 @@ public class Database extends ComposantSimple {
 			command = this.getEntree().getPoint(p).getVal();
 			System.out.println("Database : les identifiants de connexion '" +command+ "' sont arrivés dans le port Receive_SecurityManagementPort, verification de leur validite..." );
 			//Check DB et retour "vrai" ou "faux"
-			reponse = "";// = fonction();
+			reponse = ReponseSecurité(command);
 			this.getSortie().getPoint("Send_ConnexionQueryPort").setVal(reponse);
 			break;
 			

@@ -20,14 +20,29 @@ public class ConnectionManager extends ComposantSimple {
 		this.getSortie().getPorts().add(new PortSortieConcret("Send_DBQuery", obs));//envoyer une requete
 	}
 	
+	public void aiguillage(String message) {
+		String type = message.split(":")[0];
+		String value = message.split(":")[1];
+		switch (type) {
+		case "Connexion":
+			this.getSortie().getPoint("Send_SecurityCheck").setVal(value);
+			break;
+			
+		case "Query":
+			this.getSortie().getPoint("Send_DBQuery").setVal(value);
+			break;
+
+		default:
+			break;
+		}
+	}
+	
 	public void lancer(String p){
 		String command;
 		switch (p) {
 		case "Receive_ExternalSocket" : 
 			command = this.getEntree().getPoint(p).getVal();
-			//Traiter aiguillage
-			//System.out.println("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeur du serveur, elle doit donc etre traitee et envoye vers le port SortieServeur" );
-			//this.getSortie().getPoint("SortieServeurBinding").setVal(command);
+			this.aiguillage(command);
 			break;
 			
 		case "Receive_SecurityCheck" : 
