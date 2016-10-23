@@ -18,6 +18,6 @@ public class ServeurConfig extends Configuration {
 	}
 
 	public void lancer(String p){
-		System.out.println("on est bien arriv� pour le moment");
+		System.out.println("on est bien arrivee pour le moment");
 	}
 }

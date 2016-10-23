@@ -16,8 +16,8 @@ public class RPC extends Connecteur{
 	public RPC(ObserveurdeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueRPC(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
-		this.getFrom().getRoles().add(new RoleEntreeConcret("EntréeRPCdeClient"));//caller, requis
-		this.getFrom().getRoles().add(new RoleEntreeConcret("EntréeRPCdeServeur"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("EntreeRPCdeClient"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("EntreeRPCdeServeur"));//caller, requis
 		
 		this.getTo().getRoles().add(new RoleSortieConcret("SortieRPCdeClient",obs));//called, fourni
 		this.getTo().getRoles().add(new RoleSortieConcret("SortieRPCdeServeur",obs));//called, fourni
@@ -26,13 +26,13 @@ public class RPC extends Connecteur{
 	public void lancer(String p){
 		String result = glue.traduit(from.getPoint(p));
 		switch (p) {
-		case "EntréeRPCdeClient" :
-			System.out.println("RPC : la commande '" +p+ "' est arrivé dans le port entréeRPCdeClient du RPC, elle doit donc etre traitée et envoyé vers le port SortieRPCdeServeur" );
+		case "EntreeRPCdeClient" :
+			System.out.println("RPC : la commande '" +p+ "' est arrivé dans le port EntreeRPCdeClient du RPC, elle doit donc etre traitée et envoyé vers le port SortieRPCdeServeur" );
 			this.getTo().getPoint("SortieRPCdeServeur").setVal(result);
 			break;
 
-		case "EntréeRPCdeServeur" :
-			System.out.println("RPC : la commande '" +p+ "' est arrivé dans le port entréeRPCdeServeur du RPC, elle doit donc etre traitée et envoyé vers le port SortieRPCdeClient" );
+		case "EntreeRPCdeServeur" :
+			System.out.println("RPC : la commande '" +p+ "' est arrivé dans le port EntreeRPCdeServeur du RPC, elle doit donc etre traitée et envoyé vers le port SortieRPCdeClient" );
 			this.getTo().getPoint("SortieRPCdeClient").setVal(result);
 			break;
 			

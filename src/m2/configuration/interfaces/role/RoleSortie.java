@@ -11,12 +11,6 @@ public abstract class RoleSortie extends Role {
 		this.obs = obs;
 	}
 	
-	public void setVal(String val) {
-		System.out.println("RoleSortie : ecriture dans le role " + nom + "de la commande '" + val + "', delegation de la suite a la configuration");
-		this.val = val;
-		this.notifierEnvoi();
-	}
-	
 	public ObserveurdeTransit getObs() {
 		return obs;
 	}
@@ -29,5 +23,9 @@ public abstract class RoleSortie extends Role {
 		obs.notifier(this);
 	}
 
-	
+	@Override
+	public void lancer(String p) {
+		// TODO Auto-generated method stub
+		
+	}
 }

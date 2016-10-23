@@ -11,13 +11,6 @@ public abstract class PortSortie extends Port {
 		this.obs = o;
 	}
 
-	public void setVal(String val) {
-		System.out.println("PortSortie : ecriture dans le port " + nom + " de la commande '" + val + "', delegation de la suite a la configuration");
-		this.val = val;
-		notifierEnvoi();
-	}
-
-	
 	public ObserveurdeTransit getObs() {
 		return obs;
 	}
