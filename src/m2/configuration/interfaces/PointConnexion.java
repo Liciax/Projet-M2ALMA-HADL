@@ -6,10 +6,10 @@ public abstract class PointConnexion {
 	protected String val;
 
 	
-	public PointConnexion(String nom, String val) {
+	public PointConnexion(String nom) {
 		super();
 		this.nom = nom;
-		this.val = val;
+		this.val = null;
 	}
 
 	public String getNom() {

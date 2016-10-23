@@ -7,13 +7,13 @@ public class RoleSortieConcret extends RoleSortie {
 
 	private ObserveurdeTransit obs;
 
-	public RoleSortieConcret(String nom, ObserveurdeTransit obs) {
-		super(nom);
+	public RoleSortieConcret(String nom, String val, ObserveurdeTransit obs) {
+		super(nom, val, obs);
 		this.obs = obs;
 	}
 	
 	public void setVal(String val) {
-		System.out.println("RoleSortie : ecriture dans le role " + id + "de la commande '" + val + "', delegation de la suite a la configuration");
+		System.out.println("RoleSortie : ecriture dans le role " + nom + "de la commande '" + val + "', delegation de la suite a la configuration");
 		this.val = val;
 		this.notifierEnvoi();
 	}
