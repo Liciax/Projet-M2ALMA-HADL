@@ -33,7 +33,7 @@ public class Database extends ComposantSimple {
 			
 		case "Receive_SecurityManagementPort" : 
 			command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Database : les identifiants de connexion '" +command+ "' sont arrivés dans le port Receive_SecurityManagementPort, verification de leur validite..." );
+			System.out.println("Database : les identifiants de connexion '" +command+ "' sont arrivï¿½s dans le port Receive_SecurityManagementPort, verification de leur validite..." );
 			//Check DB et retour "vrai" ou "faux"
 			reponse = ReponseSecurité(command);
 			this.getSortie().getPoint("Send_ConnexionQueryPort").setVal(reponse);
