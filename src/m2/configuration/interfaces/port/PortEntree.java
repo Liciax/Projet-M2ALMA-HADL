@@ -2,8 +2,8 @@ package m2.configuration.interfaces.port;
 
 public abstract class PortEntree extends Port {
 
-	public PortEntree(String nom, String val) {
-		super(nom, val);
+	public PortEntree(String nom) {
+		super(nom);
 	}
 
 	@Override

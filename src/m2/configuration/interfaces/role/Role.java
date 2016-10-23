@@ -5,7 +5,7 @@ import m2.configuration.interfaces.PointConnexion;
 
 public abstract class Role extends PointConnexion implements ComposantAbstrait {
 
-	public Role(String nom, String val) {
+	public Role(String nom) {
 		super(nom);
 	}
 }

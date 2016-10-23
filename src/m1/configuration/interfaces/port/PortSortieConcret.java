@@ -5,9 +5,7 @@ import m2.configuration.interfaces.port.PortSortie;
 
 public class PortSortieConcret extends PortSortie {
 
-	public PortSortieConcret(String nom, String val, ObserveurdeTransit o) {
-		super(nom, val, o);
-		this.obs = o;
-		// TODO Auto-generated constructor stub
+	public PortSortieConcret(String nom, ObserveurdeTransit o) {
+		super(nom, o);
 	}
 }

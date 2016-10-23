@@ -2,8 +2,8 @@ package m2.configuration.interfaces.role;
 
 public abstract class RoleEntree extends Role {
 
-	public RoleEntree(String nom, String val) {
-		super(nom, val);
+	public RoleEntree(String nom) {
+		super(nom);
 	}
 
 	@Override
