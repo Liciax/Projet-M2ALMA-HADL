@@ -1,6 +1,6 @@
 package m1.configuration.connecteurs;
 
-import m1.configuration.connecteurs.glues.GlueRPC;
+import m1.configuration.connecteurs.glues.GlueClearanceRequest;
 import m1.configuration.interfaces.InterfaceARoleConcret;
 import m1.configuration.interfaces.role.RoleEntreeConcret;
 import m1.configuration.interfaces.role.RoleSortieConcret;
@@ -24,12 +24,12 @@ public class ClearanceRequest extends Connecteur {
 		String result = glue.traduit(from.getPoint(p));
 		switch (p) {
 		case "CalledConnec" :
-			System.out.println("ClearanceRequest : la commande '" +p+ "' est arrive dans le port CalledConnec du ClearanceRequest, elle doit donc etre traitee et envoye vers le port CallerSecu" );
+			System.out.println("ClearanceRequest : la commande '" +p+ "' est arrive dans le role CalledConnec du ClearanceRequest, elle doit donc etre traitee et envoye vers le port CallerSecu" );
 			this.getTo().getPoint("CallerSecu").setVal(result);
 			break;
 
 		case "CalledSecu" :
-			System.out.println("ClearanceRequest : la commande '" +p+ "' est arrive dans le port CalledSecu du RPC, elle doit donc etre traitee et envoye vers le port CallerConnec" );
+			System.out.println("ClearanceRequest : la commande '" +p+ "' est arrive dans le role CalledSecu du ClearanceRequest, elle doit donc etre traitee et envoye vers le port CallerConnec" );
 			this.getTo().getPoint("CallerConnec").setVal(result);
 			break;
 			
