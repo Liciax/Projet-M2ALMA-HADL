@@ -1,7 +1,6 @@
-package m1.configuration.interfaces.port;
+package m2.configuration.interfaces.port;
 
 import m2.configuration.ObserveurdeTransit;
-import m2.configuration.interfaces.port.Port;
 
 public abstract class PortSortie extends Port {
 

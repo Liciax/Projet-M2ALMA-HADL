@@ -1,9 +1,9 @@
 package m1.configuration;
 
+import m1.configuration.interfaces.port.PortEntreeConcret;
+import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
 import m2.configuration.ObserveurdeTransit;
-import m2.configuration.interfaces.port.PortEntreeConcret;
-import m2.configuration.interfaces.port.PortSortieConcret;
 
 public class ServeurConfig extends Configuration {
 

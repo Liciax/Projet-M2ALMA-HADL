@@ -1,12 +1,12 @@
 package m1.configuration.ComposantsSimples;
 
 import m1.configuration.interfaces.InterfaceAPortConcret;
+import m1.configuration.interfaces.port.PortEntreeConcret;
+import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.ObserveurdeTransit;
 import m2.configuration.composant.ComposantSimple;
 import m2.configuration.interfaces.PointConnexion;
 import m2.configuration.interfaces.port.Port;
-import m2.configuration.interfaces.port.PortEntreeConcret;
-import m2.configuration.interfaces.port.PortSortieConcret;
 
 public class Client extends ComposantSimple{
 

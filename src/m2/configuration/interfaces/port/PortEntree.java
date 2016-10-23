@@ -1,6 +1,4 @@
-package m1.configuration.interfaces.port;
-
-import m2.configuration.interfaces.port.Port;
+package m2.configuration.interfaces.port;
 
 public abstract class PortEntree extends Port {
 

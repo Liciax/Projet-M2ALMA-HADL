@@ -3,10 +3,10 @@ package m1.configuration;
 import m1.configuration.ComposantsSimples.Client;
 import m1.configuration.ComposantsSimples.Serveur;
 import m1.configuration.connecteurs.RPC;
+import m1.configuration.interfaces.port.PortEntreeConcret;
+import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
 import m2.configuration.ObserveurdeTransit;
-import m2.configuration.interfaces.port.PortEntreeConcret;
-import m2.configuration.interfaces.port.PortSortieConcret;
 import m1.configuration.ServeurConfig;
 
 public class Config extends Configuration{
