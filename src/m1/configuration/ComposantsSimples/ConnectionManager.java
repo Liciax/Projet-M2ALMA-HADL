@@ -21,12 +21,27 @@ public class ConnectionManager extends ComposantSimple {
 	}
 	
 	public void lancer(String p){
+		String command;
 		switch (p) {
 		case "Receive_ExternalSocket" : 
-			String command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeur du serveur, elle doit donc etre traitee et envoye vers le port SortieServeur" );
-			this.getSortie().getPoint("SortieServeurBinding").setVal(command);
+			command = this.getEntree().getPoint(p).getVal();
+			//Traiter aiguillage
+			//System.out.println("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeur du serveur, elle doit donc etre traitee et envoye vers le port SortieServeur" );
+			//this.getSortie().getPoint("SortieServeurBinding").setVal(command);
 			break;
+			
+		case "Receive_SecurityCheck" : 
+			command = this.getEntree().getPoint(p).getVal();
+			System.out.println("ConnectionManager : la reponse '" +command+ "' est arrivee dans le port Receive_SecurityCheck, elle doit donc etre envoyee vers le serveur" );
+			this.getSortie().getPoint("Send_ExternalSocket").setVal(command);
+			break;
+			
+		case "Receive_DBQuery" : 
+			command = this.getEntree().getPoint(p).getVal();
+			System.out.println("ConnectionManager : la reponse '" +command+ "' est arrivee dans le port Receive_DBQuery, elle doit donc etre envoyee vers le serveur" );
+			this.getSortie().getPoint("Send_ExternalSocket").setVal(command);
+			break;
+			
 		default:
 			System.out.println("lancer not implemented for Serveur");
 			break;
