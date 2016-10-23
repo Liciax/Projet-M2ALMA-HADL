@@ -18,9 +18,9 @@ public abstract class InterfaceARole extends Interface {
 		
 	}
 
-	public PointConnexion getPoint(String id) {
+	public PointConnexion getPoint(String nom) {
 		for (Role role : roles) {
-			if(role.getNom().equals(id)){
+			if(role.getNom().equals(nom)){
 				return role;
 			}
 		}
