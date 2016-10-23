@@ -1,34 +1,34 @@
 package m1.configuration.ComposantsSimples;
 
+import m1.configuration.interfaces.InterfaceAPortConcret;
+import m1.configuration.interfaces.port.PortEntreeConcret;
+import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.ObserveurdeTransit;
 import m2.configuration.composant.ComposantSimple;
-import m2.configuration.interfaces.InterfaceAPort;
 import m2.configuration.interfaces.PointConnexion;
 import m2.configuration.interfaces.port.Port;
-import m2.configuration.interfaces.port.PortEntree;
-import m2.configuration.interfaces.port.PortSortie;
 
 public class Client extends ComposantSimple{
 
 	public Client(ObserveurdeTransit obs) {
 		super();
-		this.setEntree(new InterfaceAPort());//lui ajouter 1 ports vers RCP
-		this.getEntree().getPorts().add(new PortEntree("EntréeClient"));
-		this.setSortie(new InterfaceAPort());//lui ajouter 1 port vers RCP + obs
-		this.getSortie().getPorts().add(new PortSortie("SortieClient", obs));
+		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
+		this.getEntree().getPorts().add(new PortEntreeConcret("Entrï¿½eClient"));
+		this.setSortie(new InterfaceAPortConcret());//lui ajouter 1 port vers RCP + obs
+		this.getSortie().getPorts().add(new PortSortieConcret("SortieClient", obs));
 	}
 	
 	public void prepare(String commandToSend) {
-		this.getEntree().getPoint("EntréeClient").setVal(commandToSend);
-		this.lancer("EntréeClient");
+		this.getEntree().getPoint("Entrï¿½eClient").setVal(commandToSend);
+		this.lancer("Entrï¿½eClient");
 	}
 	
 	public void lancer(String p){
-		System.out.println("Client : signal de la configuration reçu: le port " + p + " viens de recevoir un message qu'il faut traiter");
+		System.out.println("Client : signal de la configuration reï¿½u: le port " + p + " viens de recevoir un message qu'il faut traiter");
 		switch (p) {
-		case "EntréeClient" :
+		case "Entrï¿½eClient" :
 			String command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Client : la commande '" +command+ "' est arrivée dans le port EntréeClient du client, elle doit donc etre traitée et envoyé vers le port SortieClient" );
+			System.out.println("Client : la commande '" +command+ "' est arrivï¿½e dans le port Entrï¿½eClient du client, elle doit donc etre traitï¿½e et envoyï¿½ vers le port SortieClient" );
 			this.getSortie().getPoint("SortieClient").setVal(command);
 			break;
 		default:

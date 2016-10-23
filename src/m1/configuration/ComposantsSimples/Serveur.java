@@ -1,27 +1,27 @@
 package m1.configuration.ComposantsSimples;
 
+import m1.configuration.interfaces.InterfaceAPortConcret;
+import m1.configuration.interfaces.port.PortEntreeConcret;
+import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.ObserveurdeTransit;
 import m2.configuration.composant.ComposantSimple;
-import m2.configuration.interfaces.InterfaceAPort;
-import m2.configuration.interfaces.port.PortEntree;
-import m2.configuration.interfaces.port.PortSortie;
 
 public class Serveur extends ComposantSimple{
 
 	public Serveur(ObserveurdeTransit obs) {
 		super();
-		this.setEntree(new InterfaceAPort());//lui ajouter 1 ports vers RCP
-		this.getEntree().getPorts().add(new PortEntree("EntréeServeur"));
-		this.setSortie(new InterfaceAPort());//lui ajouter 1 port vers RCP + obs
-		this.getSortie().getPorts().add(new PortSortie("SortieServeur", obs));//pour retour vers le client
-		this.getSortie().getPorts().add(new PortSortie("SortieServeurBinding", obs));//pour transferer vers la config du serveur
+		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
+		this.getEntree().getPorts().add(new PortEntreeConcret("Entrï¿½eServeur"));
+		this.setSortie(new InterfaceAPortConcret());//lui ajouter 1 port vers RCP + obs
+		this.getSortie().getPorts().add(new PortSortieConcret("SortieServeur", obs));//pour retour vers le client
+		this.getSortie().getPorts().add(new PortSortieConcret("SortieServeurBinding", obs));//pour transferer vers la config du serveur
 	}
 	
 	public void lancer(String p){
 		switch (p) {
-		case "EntréeServeur" : 
+		case "Entrï¿½eServeur" : 
 			String command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Serveur : la commande '" +command+ "' est arrivée dans le port EntréeServeur du serveur, elle doit donc etre traitée et envoyé vers le port SortieServeur" );
+			System.out.println("Serveur : la commande '" +command+ "' est arrivï¿½e dans le port Entrï¿½eServeur du serveur, elle doit donc etre traitï¿½e et envoyï¿½ vers le port SortieServeur" );
 			this.getSortie().getPoint("SortieServeurBinding").setVal(command);
 			break;
 		default:

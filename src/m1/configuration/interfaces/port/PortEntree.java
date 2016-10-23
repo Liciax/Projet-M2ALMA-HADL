@@ -1,6 +1,8 @@
-package m2.configuration.interfaces.port;
+package m1.configuration.interfaces.port;
 
-public class PortEntree extends Port {
+import m2.configuration.interfaces.port.Port;
+
+public abstract class PortEntree extends Port {
 
 	public PortEntree(String nom, String val) {
 		super(nom, val);
