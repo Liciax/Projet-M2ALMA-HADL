@@ -18,6 +18,10 @@ public class Database extends ComposantSimple {
 		this.getSortie().getPorts().add(new PortSortieConcret("Send_QueryIntPort", obs));//envoyer reponse Query
 	}
 	
+	public void ReponseSecurité(String identifiants) {
+		
+	}
+	
 	public void lancer(String p){
 		String command;
 		String reponse;
