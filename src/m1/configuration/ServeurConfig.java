@@ -25,10 +25,6 @@ public class ServeurConfig extends Configuration {
 		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConfServ"));
 		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConfServ",observServ));
 		
-<<<<<<< HEAD
-		
-		//TODO : Partie basse de m1
-=======
 		/************************************************************************Composants de la configuration***********************************************************************************************/
 		
 		ConnectionManager ConnMana = new ConnectionManager(observServ);
@@ -80,11 +76,9 @@ public class ServeurConfig extends Configuration {
 //		this.entrees.put(serv.getEntree().getPoint("Entr�eServeur"), serv);
 //		this.entrees.put(confServ.getInterfConf().getPoint("EntreeConfServ"), confServ);
 		
-		
-		
-		
+			
 		//3 bindings: entre serveur et serveurConfig, entre Serveur et config et ???
->>>>>>> 7f865c4224f847af74c57e2204968ef021b96902
+
 	}
 	
 //	public void begin(String command) {
