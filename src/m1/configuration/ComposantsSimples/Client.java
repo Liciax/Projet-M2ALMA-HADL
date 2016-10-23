@@ -1,21 +1,21 @@
 package m1.configuration.ComposantsSimples;
 
+import m1.configuration.interfaces.InterfaceAPortConcret;
 import m2.configuration.ObserveurdeTransit;
 import m2.configuration.composant.ComposantSimple;
-import m2.configuration.interfaces.InterfaceAPort;
 import m2.configuration.interfaces.PointConnexion;
 import m2.configuration.interfaces.port.Port;
-import m2.configuration.interfaces.port.PortEntree;
-import m2.configuration.interfaces.port.PortSortie;
+import m2.configuration.interfaces.port.PortEntreeConcret;
+import m2.configuration.interfaces.port.PortSortieConcret;
 
 public class Client extends ComposantSimple{
 
 	public Client(ObserveurdeTransit obs) {
 		super();
-		this.setEntree(new InterfaceAPort());//lui ajouter 1 ports vers RCP
-		this.getEntree().getPorts().add(new PortEntree("EntréeClient"));
-		this.setSortie(new InterfaceAPort());//lui ajouter 1 port vers RCP + obs
-		this.getSortie().getPorts().add(new PortSortie("SortieClient", obs));
+		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
+		this.getEntree().getPorts().add(new PortEntreeConcret("EntréeClient"));
+		this.setSortie(new InterfaceAPortConcret());//lui ajouter 1 port vers RCP + obs
+		this.getSortie().getPorts().add(new PortSortieConcret("SortieClient", obs));
 	}
 	
 	public void prepare(String commandToSend) {

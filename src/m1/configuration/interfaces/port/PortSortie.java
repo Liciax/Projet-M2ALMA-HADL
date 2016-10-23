@@ -1,23 +1,22 @@
-package m2.configuration.interfaces.port;
+package m1.configuration.interfaces.port;
 
 import m2.configuration.ObserveurdeTransit;
+import m2.configuration.interfaces.port.Port;
 
-public class PortSortie extends Port {
+public abstract class PortSortie extends Port {
 
-	private ObserveurdeTransit obs;
-	
-	public PortSortie(String nom, ObserveurdeTransit o) {
+	protected ObserveurdeTransit obs;
+
+	public PortSortie(String nom) {
 		super(nom);
-		this.obs = o;
-		// TODO Auto-generated constructor stub
 	}
-	
+
 	public void setVal(String val) {
 		System.out.println("PortSortie : ecriture dans le port " + id + " de la commande '" + val + "', delegation de la suite a la configuration");
 		this.val = val;
 		notifierEnvoi();
 	}
-	
+
 	public void notifierEnvoi() {
 		obs.notifier(this);
 	}
@@ -27,4 +26,5 @@ public class PortSortie extends Port {
 		// TODO Auto-generated method stub
 		
 	}
+
 }

@@ -1,11 +1,11 @@
 package m1.configuration.connecteurs;
 
 import m1.configuration.connecteurs.glues.GlueRPC;
+import m1.configuration.interfaces.InterfaceAPortConcret;
+import m1.configuration.interfaces.InterfaceARoleConcret;
 import m2.configuration.ObserveurdeTransit;
 import m2.configuration.connecteur.Connecteur;
 import m2.configuration.connecteur.TypeConnecteur;
-import m2.configuration.interfaces.InterfaceAPort;
-import m2.configuration.interfaces.InterfaceARole;
 import m2.configuration.interfaces.PointConnexion;
 import m2.configuration.interfaces.role.Role;
 import m2.configuration.interfaces.role.RoleEntree;
@@ -14,7 +14,7 @@ import m2.configuration.interfaces.role.RoleSortie;
 public class RPC extends Connecteur{
 
 	public RPC(ObserveurdeTransit obs) {
-		super(TypeConnecteur.EXPLICITE, new GlueRPC(), new InterfaceARole(), new InterfaceARole());
+		super(TypeConnecteur.EXPLICITE, new GlueRPC(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
 		this.getFrom().getRoles().add(new RoleEntree("EntréeRPCdeClient"));//caller, requis
 		this.getFrom().getRoles().add(new RoleEntree("EntréeRPCdeServeur"));//caller, requis

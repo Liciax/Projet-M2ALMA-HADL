@@ -3,6 +3,7 @@ package m2.configuration.composant;
 import java.util.ArrayList;
 import java.util.List;
 
+import m1.configuration.interfaces.InterfaceAPortConcret;
 import m2.configuration.ComposantAbstrait;
 import m2.configuration.interfaces.InterfaceAPort;
 
@@ -16,8 +17,8 @@ public abstract class ComposantSimple implements ComposantAbstrait{
 		public ComposantSimple() {
 			ct = new ArrayList<ContrainteTechnique>();
 			proprietes = new ArrayList<Propriete>();
-			this.entree = new InterfaceAPort();
-			this.sortie = new InterfaceAPort();
+			this.entree = new InterfaceAPortConcret();
+			this.sortie = new InterfaceAPortConcret();
 		}
 		
 		public void lancer(String p){

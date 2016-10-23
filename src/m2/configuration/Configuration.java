@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import m1.configuration.interfaces.InterfaceAPortConcret;
 import m2.configuration.interfaces.InterfaceAPort;
 import m2.configuration.interfaces.PointConnexion;
 
@@ -19,7 +20,7 @@ public abstract class Configuration implements ComposantAbstrait{
 		this.entrees = new HashMap<PointConnexion, ComposantAbstrait>();
 		this.liaisons = new HashMap<PointConnexion, PointConnexion>();
 		this.listeComposants = new ArrayList<ComposantAbstrait>();
-		this.interfConf = new InterfaceAPort();
+		this.interfConf = new InterfaceAPortConcret();
 	}
 	
 	public void notifier(PointConnexion p) {

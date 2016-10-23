@@ -5,8 +5,8 @@ import m1.configuration.ComposantsSimples.Serveur;
 import m1.configuration.connecteurs.RPC;
 import m2.configuration.Configuration;
 import m2.configuration.ObserveurdeTransit;
-import m2.configuration.interfaces.port.PortEntree;
-import m2.configuration.interfaces.port.PortSortie;
+import m2.configuration.interfaces.port.PortEntreeConcret;
+import m2.configuration.interfaces.port.PortSortieConcret;
 import m1.configuration.ServeurConfig;
 
 public class Config extends Configuration{
@@ -15,8 +15,8 @@ public class Config extends Configuration{
 		super();
 		this.id = "ConfigGenerale";
 		ObserveurdeTransit observ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de données
-		this.getInterfConf().getPorts().add(new PortEntree("EntreeConf"));
-		this.getInterfConf().getPorts().add(new PortSortie("SortieConf",observ));
+		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConf"));
+		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConf",observ));
 		
 		
 		Client cli = new Client(observ);
