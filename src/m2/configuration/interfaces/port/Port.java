@@ -5,7 +5,7 @@ import m2.configuration.interfaces.PointConnexion;
 
 public abstract class Port extends PointConnexion implements ComposantAbstrait {
 
-	public Port(String nom, String val) {
+	public Port(String nom) {
 		super(nom);
 	}
 }

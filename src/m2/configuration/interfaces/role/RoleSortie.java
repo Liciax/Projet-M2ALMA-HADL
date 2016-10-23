@@ -6,8 +6,8 @@ public abstract class RoleSortie extends Role {
 
 	private ObserveurdeTransit obs;
 
-	public RoleSortie(String nom, String val, ObserveurdeTransit obs) {
-		super(nom, val);
+	public RoleSortie(String nom, ObserveurdeTransit obs) {
+		super(nom);
 		this.obs = obs;
 	}
 	

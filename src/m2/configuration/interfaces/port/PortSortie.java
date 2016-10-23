@@ -6,8 +6,8 @@ public abstract class PortSortie extends Port {
 
 	private ObserveurdeTransit obs;
 	
-	public PortSortie(String nom, String val, ObserveurdeTransit o) {
-		super(nom, val);
+	public PortSortie(String nom, ObserveurdeTransit o) {
+		super(nom);
 		this.obs = o;
 	}
 

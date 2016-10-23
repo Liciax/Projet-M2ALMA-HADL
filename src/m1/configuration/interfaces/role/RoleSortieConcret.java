@@ -7,8 +7,8 @@ public class RoleSortieConcret extends RoleSortie {
 
 	private ObserveurdeTransit obs;
 
-	public RoleSortieConcret(String nom, String val, ObserveurdeTransit obs) {
-		super(nom, val, obs);
+	public RoleSortieConcret(String nom, ObserveurdeTransit obs) {
+		super(nom, obs);
 		this.obs = obs;
 	}
 	
