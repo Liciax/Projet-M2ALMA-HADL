@@ -5,11 +5,8 @@ import m2.configuration.interfaces.role.RoleSortie;
 
 public class RoleSortieConcret extends RoleSortie {
 
-	private ObserveurdeTransit obs;
-
 	public RoleSortieConcret(String nom, ObserveurdeTransit obs) {
 		super(nom, obs);
-		this.obs = obs;
 	}
 	
 	public void setVal(String val) {
@@ -18,13 +15,4 @@ public class RoleSortieConcret extends RoleSortie {
 		this.notifierEnvoi();
 	}
 
-	public void notifierEnvoi() {
-		this.getObs().notifier(this);
-	}
-
-	@Override
-	public void lancer(String p) {
-		// TODO Auto-generated method stub
-		
-	}
 }
