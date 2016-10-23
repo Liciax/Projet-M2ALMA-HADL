@@ -19,7 +19,7 @@ public class RoleSortieConcret extends RoleSortie {
 	}
 
 	public void notifierEnvoi() {
-		obs.notifier(this);
+		this.getObs().notifier(this);
 	}
 
 	@Override

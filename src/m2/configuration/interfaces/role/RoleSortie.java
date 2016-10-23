@@ -30,4 +30,5 @@ public abstract class RoleSortie extends Role {
 		obs.notifier(this);
 	}
 
+	
 }

@@ -7,7 +7,5 @@ public class PortSortieConcret extends PortSortie {
 
 	public PortSortieConcret(String nom, ObserveurdeTransit o) {
 		super(nom, o);
-		this.obs = o;
-		// TODO Auto-generated constructor stub
 	}
 }
