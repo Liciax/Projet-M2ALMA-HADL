@@ -1,5 +1,6 @@
 package m1.configuration.interfaces.port;
 
+import m2.configuration.interfaces.port.PortEntree;
 
 public class PortEntreeConcret extends PortEntree {
 
