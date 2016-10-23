@@ -3,24 +3,24 @@ package m1.configuration.connecteurs;
 import m1.configuration.connecteurs.glues.GlueRPC;
 import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.InterfaceARoleConcret;
+import m1.configuration.interfaces.role.RoleEntreeConcret;
+import m1.configuration.interfaces.role.RoleSortieConcret;
 import m2.configuration.ObserveurdeTransit;
 import m2.configuration.connecteur.Connecteur;
 import m2.configuration.connecteur.TypeConnecteur;
 import m2.configuration.interfaces.PointConnexion;
 import m2.configuration.interfaces.role.Role;
-import m2.configuration.interfaces.role.RoleEntree;
-import m2.configuration.interfaces.role.RoleSortie;
 
 public class RPC extends Connecteur{
 
 	public RPC(ObserveurdeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueRPC(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
-		this.getFrom().getRoles().add(new RoleEntree("EntréeRPCdeClient"));//caller, requis
-		this.getFrom().getRoles().add(new RoleEntree("EntréeRPCdeServeur"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("EntréeRPCdeClient"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("EntréeRPCdeServeur"));//caller, requis
 		
-		this.getTo().getRoles().add(new RoleSortie("SortieRPCdeClient",obs));//called, fourni
-		this.getTo().getRoles().add(new RoleSortie("SortieRPCdeServeur",obs));//called, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("SortieRPCdeClient",obs));//called, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("SortieRPCdeServeur",obs));//called, fourni
 	}
 	
 	public void lancer(String p){

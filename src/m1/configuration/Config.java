@@ -24,19 +24,22 @@ public class Config extends Configuration{
 		
 		RPC rpc = new RPC(observ);
 		this.listeComposants.add(rpc);
-		this.liaisons.put(cli.getSortie().getPoint("SortieClient"), rpc.getFrom().getPoint("EntréeRPCdeClient"));//Client->RPC
-		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeClient"), cli.getEntree().getPoint("EntréeClient"));//RCP->Client
 		
 		Serveur serv = new Serveur(observ);
 		this.listeComposants.add(serv);
-		this.liaisons.put(serv.getSortie().getPoint("SortieServeur"), rpc.getFrom().getPoint("EntréeRPCdeServeur"));//Serveur->RCP
-		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeServeur"), serv.getEntree().getPoint("EntréeServeur"));//RCP->Serveur
 		
 
 		ServeurConfig confServ = new ServeurConfig();//config serveur
 		this.listeComposants.add(confServ);
-		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entrée de ConfServ
 		
+		/************************************************************************Liaisons Attachements*********************************************************************************************************/
+		this.liaisons.put(cli.getSortie().getPoint("SortieClient"), rpc.getFrom().getPoint("EntréeRPCdeClient"));//Client->RPC
+		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeClient"), cli.getEntree().getPoint("EntréeClient"));//RCP->Client
+		this.liaisons.put(serv.getSortie().getPoint("SortieServeur"), rpc.getFrom().getPoint("EntréeRPCdeServeur"));//Serveur->RCP
+		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeServeur"), serv.getEntree().getPoint("EntréeServeur"));//RCP->Serveur
+		/************************************************************************Liaisons Bindings************************************************************************************************************/
+		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entrée de ConfServ
+		/*********************************************************************************************************************************************************************************/
 		
 		
 		this.entrees.put(cli.getEntree().getPoint("EntréeClient"), cli);
