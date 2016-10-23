@@ -21,7 +21,7 @@ public class Serveur extends ComposantSimple{
 		switch (p) {
 		case "EntreeServeur" : 
 			String command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Serveur : la commande '" +command+ "' est arriv�e dans le port EntreeServeur du serveur, elle doit donc etre trait�e et envoy� vers le port SortieServeur" );
+			System.out.println("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeur du serveur, elle doit donc etre traitee et envoye vers le port SortieServeur" );
 			this.getSortie().getPoint("SortieServeurBinding").setVal(command);
 			break;
 		default:

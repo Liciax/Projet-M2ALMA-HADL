@@ -16,11 +16,11 @@ public class RPC extends Connecteur{
 	public RPC(ObserveurdeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueRPC(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
-		this.getFrom().getRoles().add(new RoleEntreeConcret("EntreeRPCdeClient"));//caller, requis
-		this.getFrom().getRoles().add(new RoleEntreeConcret("EntreeRPCdeServeur"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("EntreeRPCdeClient"));//called, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("EntreeRPCdeServeur"));//called, requis
 		
-		this.getTo().getRoles().add(new RoleSortieConcret("SortieRPCdeClient",obs));//called, fourni
-		this.getTo().getRoles().add(new RoleSortieConcret("SortieRPCdeServeur",obs));//called, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("SortieRPCdeClient",obs));//caller, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("SortieRPCdeServeur",obs));//caller, fourni
 	}
 	
 	public void lancer(String p){

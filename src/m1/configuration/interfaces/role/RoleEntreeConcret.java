@@ -9,4 +9,8 @@ public class RoleEntreeConcret extends RoleEntree {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void setVal(String val) {
+		System.out.println("RoleEntree : ecriture dans le port " + nom + " de la commande " + val);
+		this.val = val;
+	}
 }

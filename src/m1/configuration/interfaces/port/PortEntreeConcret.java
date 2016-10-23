@@ -8,5 +8,11 @@ public class PortEntreeConcret extends PortEntree {
 		super(nom);
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public void setVal(String val) {
+		System.out.println("PortEntree : ecriture dans le port " + nom + " de la commande " + val);
+		this.val = val;
+	}
 
 }

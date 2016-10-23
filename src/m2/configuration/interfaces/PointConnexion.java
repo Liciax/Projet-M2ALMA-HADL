@@ -25,7 +25,6 @@ public abstract class PointConnexion {
 	}
 
 	public void setVal(String val) {
-		System.out.println("PortEntree/RoleEntree : ecriture dans le port " + nom + " de la commande " + val);
 		this.val = val;
 	}
 
