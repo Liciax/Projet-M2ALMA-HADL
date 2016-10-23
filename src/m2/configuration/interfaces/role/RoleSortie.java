@@ -15,7 +15,6 @@ public abstract class RoleSortie extends Role {
 		System.out.println("RoleSortie : ecriture dans le role " + nom + "de la commande '" + val + "', delegation de la suite a la configuration");
 		this.val = val;
 		this.notifierEnvoi();
-
 	}
 	
 	public ObserveurdeTransit getObs() {

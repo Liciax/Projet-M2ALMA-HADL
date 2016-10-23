@@ -20,9 +20,9 @@ public abstract class InterfaceAPort extends Interface {
 		
 	}
 
-	public PointConnexion getPoint(String id) {
+	public PointConnexion getPoint(String nom) {
 		for (Port port : ports) {
-			if(port.getNom().equals(id)){
+			if(port.getNom().equals(nom)){
 				return port;
 			}
 		}
