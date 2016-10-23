@@ -7,11 +7,11 @@ public class GlueRPC extends Glue{
 
 	public String traduit(PointConnexion p) {
 		System.out.println("GlueRPC : traduction par la glue");
-		switch(p.getId()) {//traitement peut etre different en fonction de la glue
-		case "EntréeRPCdeClient":
+		switch(p.getNom()) {//traitement peut etre different en fonction de la glue
+		case "Entrï¿½eRPCdeClient":
 			return p.getVal();
 
-		case "EntréeRPCdeServeur":
+		case "Entrï¿½eRPCdeServeur":
 			return p.getVal();
 			
 		default:

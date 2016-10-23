@@ -23,7 +23,7 @@ public class InterfaceARole extends Interface {
 	
 	public PointConnexion getPoint(String id){
 		for (Role role : roles) {
-			if(role.getId().equals(id)){
+			if(role.getNom().equals(id)){
 				return role;
 			}
 		}

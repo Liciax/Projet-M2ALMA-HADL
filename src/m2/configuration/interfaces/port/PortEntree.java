@@ -2,9 +2,8 @@ package m2.configuration.interfaces.port;
 
 public class PortEntree extends Port {
 
-	public PortEntree(String nom) {
-		super(nom);
-		// TODO Auto-generated constructor stub
+	public PortEntree(String nom, String val) {
+		super(nom, val);
 	}
 
 	@Override

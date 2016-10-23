@@ -6,14 +6,14 @@ public class PortSortie extends Port {
 
 	private ObserveurdeTransit obs;
 	
-	public PortSortie(String nom, ObserveurdeTransit o) {
-		super(nom);
+	public PortSortie(String nom, String val, ObserveurdeTransit o) {
+		super(nom, val);
 		this.obs = o;
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void setVal(String val) {
-		System.out.println("PortSortie : ecriture dans le port " + id + " de la commande '" + val + "', delegation de la suite a la configuration");
+		System.out.println("PortSortie : ecriture dans le port " + nom + " de la commande '" + val + "', delegation de la suite a la configuration");
 		this.val = val;
 		notifierEnvoi();
 	}

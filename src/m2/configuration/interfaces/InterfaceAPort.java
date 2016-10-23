@@ -24,7 +24,7 @@ public class InterfaceAPort extends Interface {
 	
 	public PointConnexion getPoint(String id){
 		for (Port port : ports) {
-			if(port.getId().equals(id)){
+			if(port.getNom().equals(id)){
 				return port;
 			}
 		}
