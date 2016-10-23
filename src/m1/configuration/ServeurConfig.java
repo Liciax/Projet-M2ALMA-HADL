@@ -66,14 +66,14 @@ public class ServeurConfig extends Configuration {
 		
 		/************************************************************************Liaisons Bindings************************************************************************************************************/
 //		TODO: mettres les entrées et binding
-//		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entr�e de ConfServ
+//		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entree de ConfServ
 //		
 //		/*********************************************************************************************************************************************************************************/
 //		
-//		this.entrees.put(cli.getEntree().getPoint("Entr�eClient"), cli);
-//		this.entrees.put(rpc.getFrom().getPoint("Entr�eRPCdeClient"), rpc);
-//		this.entrees.put(rpc.getFrom().getPoint("Entr�eRPCdeServeur"), rpc);
-//		this.entrees.put(serv.getEntree().getPoint("Entr�eServeur"), serv);
+//		this.entrees.put(cli.getEntree().getPoint("EntreeClient"), cli);
+//		this.entrees.put(rpc.getFrom().getPoint("EntreeRPCdeClient"), rpc);
+//		this.entrees.put(rpc.getFrom().getPoint("EntreeRPCdeServeur"), rpc);
+//		this.entrees.put(serv.getEntree().getPoint("EntreeServeur"), serv);
 //		this.entrees.put(confServ.getInterfConf().getPoint("EntreeConfServ"), confServ);
 		
 			
