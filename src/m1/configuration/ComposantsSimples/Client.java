@@ -13,22 +13,22 @@ public class Client extends ComposantSimple{
 	public Client(ObserveurdeTransit obs) {
 		super();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
-		this.getEntree().getPorts().add(new PortEntreeConcret("Entr�eClient"));
+		this.getEntree().getPorts().add(new PortEntreeConcret("EntreeClient"));
 		this.setSortie(new InterfaceAPortConcret());//lui ajouter 1 port vers RCP + obs
 		this.getSortie().getPorts().add(new PortSortieConcret("SortieClient", obs));
 	}
 	
 	public void prepare(String commandToSend) {
-		this.getEntree().getPoint("Entr�eClient").setVal(commandToSend);
-		this.lancer("Entr�eClient");
+		this.getEntree().getPoint("EntreeClient").setVal(commandToSend);
+		this.lancer("EntreeClient");
 	}
 	
 	public void lancer(String p){
 		System.out.println("Client : signal de la configuration re�u: le port " + p + " viens de recevoir un message qu'il faut traiter");
 		switch (p) {
-		case "Entr�eClient" :
+		case "EntreeClient" :
 			String command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Client : la commande '" +command+ "' est arriv�e dans le port Entr�eClient du client, elle doit donc etre trait�e et envoy� vers le port SortieClient" );
+			System.out.println("Client : la commande '" +command+ "' est arriv�e dans le port EntreeClient du client, elle doit donc etre trait�e et envoy� vers le port SortieClient" );
 			this.getSortie().getPoint("SortieClient").setVal(command);
 			break;
 		default:

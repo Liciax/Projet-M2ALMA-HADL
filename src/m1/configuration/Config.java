@@ -25,8 +25,8 @@ public class Config extends Configuration{
 		RPC rpc = new RPC(observ);
 		this.listeComposants.add(rpc);
 
-		this.liaisons.put(cli.getSortie().getPoint("SortieClient"), rpc.getFrom().getPoint("Entr�eRPCdeClient"));//Client->RPC
-		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeClient"), cli.getEntree().getPoint("Entr�eClient"));//RCP->Client
+		this.liaisons.put(cli.getSortie().getPoint("SortieClient"), rpc.getFrom().getPoint("EntreeRPCdeClient"));//Client->RPC
+		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeClient"), cli.getEntree().getPoint("EntreeClient"));//RCP->Client
 		
 		Serveur serv = new Serveur(observ);
 		this.listeComposants.add(serv);
@@ -35,19 +35,19 @@ public class Config extends Configuration{
 		this.listeComposants.add(confServ);
 		
 		/************************************************************************Liaisons Attachements*********************************************************************************************************/
-		this.liaisons.put(cli.getSortie().getPoint("SortieClient"), rpc.getFrom().getPoint("Entr�eRPCdeClient"));//Client->RPC
-		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeClient"), cli.getEntree().getPoint("Entr�eClient"));//RCP->Client
-		this.liaisons.put(serv.getSortie().getPoint("SortieServeur"), rpc.getFrom().getPoint("Entr�eRPCdeServeur"));//Serveur->RCP
-		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeServeur"), serv.getEntree().getPoint("Entr�eServeur"));//RCP->Serveur
+		this.liaisons.put(cli.getSortie().getPoint("SortieClient"), rpc.getFrom().getPoint("EntreeRPCdeClient"));//Client->RPC
+		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeClient"), cli.getEntree().getPoint("EntreeClient"));//RCP->Client
+		this.liaisons.put(serv.getSortie().getPoint("SortieServeur"), rpc.getFrom().getPoint("EntreeRPCdeServeur"));//Serveur->RCP
+		this.liaisons.put(rpc.getTo().getPoint("SortieRPCdeServeur"), serv.getEntree().getPoint("EntreeServeur"));//RCP->Serveur
 		/************************************************************************Liaisons Bindings************************************************************************************************************/
-		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entr�e de ConfServ
+		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entree de ConfServ
 		/*********************************************************************************************************************************************************************************/
 		
 		
-		this.entrees.put(cli.getEntree().getPoint("Entr�eClient"), cli);
-		this.entrees.put(rpc.getFrom().getPoint("Entr�eRPCdeClient"), rpc);
-		this.entrees.put(rpc.getFrom().getPoint("Entr�eRPCdeServeur"), rpc);
-		this.entrees.put(serv.getEntree().getPoint("Entr�eServeur"), serv);
+		this.entrees.put(cli.getEntree().getPoint("EntreeClient"), cli);
+		this.entrees.put(rpc.getFrom().getPoint("EntreeRPCdeClient"), rpc);
+		this.entrees.put(rpc.getFrom().getPoint("EntreeRPCdeServeur"), rpc);
+		this.entrees.put(serv.getEntree().getPoint("EntreeServeur"), serv);
 		this.entrees.put(confServ.getInterfConf().getPoint("EntreeConfServ"), confServ);
 		
 		
