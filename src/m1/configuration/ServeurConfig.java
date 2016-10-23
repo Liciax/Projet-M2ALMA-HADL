@@ -10,7 +10,7 @@ public class ServeurConfig extends Configuration {
 	public ServeurConfig() {
 		super();
 		this.id = "ConfigServeur";
-		ObserveurdeTransit observServ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donn�es
+		ObserveurdeTransit observServ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
 		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConfServ"));
 		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConfServ",observServ));
 		

@@ -24,11 +24,11 @@ public class Client extends ComposantSimple{
 	}
 	
 	public void lancer(String p){
-		System.out.println("Client : signal de la configuration re�u: le port " + p + " viens de recevoir un message qu'il faut traiter");
+		System.out.println("Client : signal de la configuration reeu: le port " + p + " viens de recevoir un message qu'il faut traiter");
 		switch (p) {
 		case "EntreeClient" :
 			String command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Client : la commande '" +command+ "' est arriv�e dans le port EntreeClient du client, elle doit donc etre trait�e et envoy� vers le port SortieClient" );
+			System.out.println("Client : la commande '" +command+ "' est arrivee dans le port EntreeClient du client, elle doit donc etre traitee et envoye vers le port SortieClient" );
 			this.getSortie().getPoint("SortieClient").setVal(command);
 			break;
 		default:

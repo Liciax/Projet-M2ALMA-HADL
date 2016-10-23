@@ -14,7 +14,7 @@ public class Config extends Configuration{
 	public Config() {
 		super();
 		this.id = "ConfigGenerale";
-		ObserveurdeTransit observ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donn�es
+		ObserveurdeTransit observ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
 		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConf"));
 		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConf",observ));
 		
