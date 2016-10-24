@@ -23,14 +23,14 @@ public class SQLRequest extends Connecteur {
 	public void lancer(String p){
 		String result = glue.traduit(from.getPoint(p));
 		switch (p) {
-		case "CalledConnec" :
-			System.out.println("SQLRequest : la commande '" +p+ "' est arrive dans le role CalledConnec du SQLRequest, elle doit donc etre traitee et envoye vers le port CallerDB" );
-			this.getTo().getPoint("CallerDB").setVal(result);
+		case "CallerConnec" :
+			System.out.println("SQLRequest : la commande '" +result+ "' est arrive dans le role CalledConnec du SQLRequest, elle doit donc etre traitee et envoye vers le port CallerDB" );
+			this.getTo().getPoint("CalledDB").setVal(result);
 			break;
 
-		case "CalledDB" :
-			System.out.println("SQLRequest : la commande '" +p+ "' est arrive dans le role CalledDB du SQLRequest, elle doit donc etre traitee et envoye vers le role CallerConnec" );
-			this.getTo().getPoint("CallerConnec").setVal(result);
+		case "CallerDB" :
+			System.out.println("SQLRequest : la commande '" +result+ "' est arrive dans le role CalledDB du SQLRequest, elle doit donc etre traitee et envoye vers le role CallerConnec" );
+			this.getTo().getPoint("CalledConnec").setVal(result);
 			break;
 			
 		default:

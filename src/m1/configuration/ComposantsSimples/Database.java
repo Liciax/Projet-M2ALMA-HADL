@@ -36,14 +36,14 @@ public class Database extends ComposantSimple {
 			System.out.println("Database : les identifiants de connexion '" +command+ "' sont arrives dans le port Receive_SecurityManagementPort, verification de leur validite..." );
 			//Check DB et retour "vrai" ou "faux"
 			reponse = ReponseSecurite(command);
-			this.getSortie().getPoint("Send_ConnexionQueryPort").setVal(reponse);
+			this.getSortie().getPoint("Send_SecurityManagementPort").setVal(reponse);
 			break;
 			
 		case "Receive_QueryIntPort" : 
 			command = this.getEntree().getPoint(p).getVal();
 			System.out.println("Database : la Query '" +command+ "' est arrivee dans le port Receive_QueryIntPort, execution..." );
 			reponse = "";// = fonction();
-			this.getSortie().getPoint("Send_SecurityAnthPort").setVal(reponse);
+			this.getSortie().getPoint("Send_QueryIntPort").setVal(reponse);
 			break;
 			
 		default:

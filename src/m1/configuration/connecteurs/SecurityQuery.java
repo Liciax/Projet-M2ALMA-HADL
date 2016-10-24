@@ -23,14 +23,14 @@ public class SecurityQuery extends Connecteur {
 	public void lancer(String p){
 		String result = glue.traduit(from.getPoint(p));
 		switch (p) {
-		case "CalledDB" :
-			System.out.println("SecurityQuery : la commande '" +p+ "' est arrive dans le port CalledDB du SecurityQuery, elle doit donc etre traitee et envoye vers le port CallerSecu" );
-			this.getTo().getPoint("CallerSecu").setVal(result);
+		case "CallerDB" :
+			System.out.println("SecurityQuery : la commande '" +result+ "' est arrive dans le port CalledDB du SecurityQuery, elle doit donc etre traitee et envoye vers le port CallerSecu" );
+			this.getTo().getPoint("CalledSecu").setVal(result);
 			break;
 
-		case "CalledSecu" :
-			System.out.println("SecurityQuery : la commande '" +p+ "' est arrive dans le port CalledSecu du SecurityQuery, elle doit donc etre traitee et envoye vers le port CallerDB" );
-			this.getTo().getPoint("CallerDB").setVal(result);
+		case "CallerSecu" :
+			System.out.println("SecurityQuery : la commande '" +result+ "' est arrive dans le port CalledSecu du SecurityQuery, elle doit donc etre traitee et envoye vers le port CallerDB" );
+			this.getTo().getPoint("CalledDB").setVal(result);
 			break;
 			
 		default:

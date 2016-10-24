@@ -8,10 +8,10 @@ public class GlueSecurityQuery extends Glue {
 	public String traduit(PointConnexion p) {
 		System.out.println("GlueSecurityQuery : traduction par la glue");
 		switch(p.getNom()) {//traitement peut etre different en fonction de la glue
-		case "CalledDB":
+		case "CallerDB":
 			return p.getVal();
 
-		case "CalledSecu":
+		case "CallerSecu":
 			return p.getVal();
 			
 		default:

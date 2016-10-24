@@ -12,17 +12,24 @@ public class Serveur extends ComposantSimple{
 		super();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
 		this.getEntree().getPorts().add(new PortEntreeConcret("EntreeServeur"));
+		this.getEntree().getPorts().add(new PortEntreeConcret("EntreeServeurBinding"));
 		this.setSortie(new InterfaceAPortConcret());//lui ajouter 1 port vers RCP + obs
 		this.getSortie().getPorts().add(new PortSortieConcret("SortieServeur", obs));//pour retour vers le client
 		this.getSortie().getPorts().add(new PortSortieConcret("SortieServeurBinding", obs));//pour transferer vers la config du serveur
 	}
 	
 	public void lancer(String p){
+		String command;
 		switch (p) {
 		case "EntreeServeur" : 
-			String command = this.getEntree().getPoint(p).getVal();
+			command = this.getEntree().getPoint(p).getVal();
 			System.out.println("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeur du serveur, elle doit donc etre traitee et envoye vers le port SortieServeur" );
 			this.getSortie().getPoint("SortieServeurBinding").setVal(command);
+			break;
+		case "EntreeServeurBinding" : 
+			command = this.getEntree().getPoint(p).getVal();
+			System.out.println("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeurBinding du serveur, elle doit donc etre traitee et envoye vers le port Client" );
+			this.getSortie().getPoint("SortieServeur").setVal(command);
 			break;
 		default:
 			System.out.println("lancer not implemented for Serveur");

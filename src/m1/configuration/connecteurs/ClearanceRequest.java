@@ -22,15 +22,16 @@ public class ClearanceRequest extends Connecteur {
 	
 	public void lancer(String p){
 		String result = glue.traduit(from.getPoint(p));
+
 		switch (p) {
-		case "CalledConnec" :
-			System.out.println("ClearanceRequest : la commande '" +p+ "' est arrive dans le role CalledConnec du ClearanceRequest, elle doit donc etre traitee et envoye vers le port CallerSecu" );
-			this.getTo().getPoint("CallerSecu").setVal(result);
+		case "CallerConnec" :
+			System.out.println("ClearanceRequest : la commande '" +result+ "' est arrive dans le role CalledConnec du ClearanceRequest, elle doit donc etre traitee et envoye vers le port CallerSecu" );
+			this.getTo().getPoint("CalledSecu").setVal(result);
 			break;
 
-		case "CalledSecu" :
-			System.out.println("ClearanceRequest : la commande '" +p+ "' est arrive dans le role CalledSecu du ClearanceRequest, elle doit donc etre traitee et envoye vers le port CallerConnec" );
-			this.getTo().getPoint("CallerConnec").setVal(result);
+		case "CallerSecu" :
+			System.out.println("ClearanceRequest : la commande '" +result+ "' est arrive dans le role CalledSecu du ClearanceRequest, elle doit donc etre traitee et envoye vers le port CallerConnec" );
+			this.getTo().getPoint("CalledConnec").setVal(result);
 			break;
 			
 		default:

@@ -30,7 +30,7 @@ public class SecurityManager extends ComposantSimple {
 			
 		case "Receive_ConnexionQueryPort" : 
 			command = this.getEntree().getPoint(p).getVal();
-			System.out.println("ConnectionManager : la reponse '" +command+ "' est arrivee de la DB dans le port Receive_ConnexionQueryPort, elle doit donc etre envoyee vers le ConnectionManager" );
+			System.out.println("SecurityManager : la reponse '" +command+ "' est arrivee de la DB dans le port Receive_ConnexionQueryPort, elle doit donc etre envoyee vers le ConnectionManager" );
 			this.getSortie().getPoint("Send_SecurityAnthPort").setVal(command);
 			break;
 			

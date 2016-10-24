@@ -10,7 +10,7 @@ public class PortSortieConcret extends PortSortie {
 	}
 	
 	public void setVal(String val) {
-		System.out.println("PortSortie : ecriture dans le port " + nom + " de la commande '" + val + "', delegation de la suite a la configuration");
+		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&PortSortie : ecriture dans le port " + nom + " de la commande '" + val + "', delegation de la suite a la configuration");
 		this.val = val;
 		notifierEnvoi();
 	}

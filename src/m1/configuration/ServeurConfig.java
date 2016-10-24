@@ -10,18 +10,19 @@ import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
 import m2.configuration.ObserveurdeTransit;
+import m2.configuration.composant.ComposantSimple;
 
 public class ServeurConfig extends Configuration {
 
-	public ServeurConfig() {
-		super();
+	public ServeurConfig(ObserveurdeTransit o) {
+		super(o);
 		
 		/************************************************************************Elements propre a la configuration*******************************************************************************************/
 
 		this.id = "ConfigServeur";
 		ObserveurdeTransit observServ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
 		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConfServ"));
-		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConfServ",observServ));
+		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConfServ", o));
 		
 		/************************************************************************Composants de la configuration***********************************************************************************************/
 		
@@ -64,7 +65,7 @@ public class ServeurConfig extends Configuration {
 		
 		/************************************************************************Liaisons Bindings************************************************************************************************************/
 	
-//		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entree de ConfServ
+		this.liaisons.put(connectionManager.getSortie().getPoint("Send_ExternalSocket"), this.getInterfConf().getPoint("SortieConfServ"));//Binding Sortie de serv -> Entree de ConfServ
 		
 		/*********************************************************************************************************************************************************************************/
 		
@@ -87,7 +88,7 @@ public class ServeurConfig extends Configuration {
 		this.entrees.put(sqlRequest.getFrom().getPoint("CallerDB"), sqlRequest);
 		this.entrees.put(sqlRequest.getFrom().getPoint("CallerConnec"), sqlRequest);
 			
-		//3 bindings: entre serveur et serveurConfig, entre Serveur et config et ???
+		
 
 	}
 	
@@ -97,6 +98,17 @@ public class ServeurConfig extends Configuration {
 
 
 	public void lancer(String p){
-		System.out.println("on est bien arrivee pour le moment");
+		String command;
+		switch (p) {
+		case "EntreeConfServ" : 
+			command = this.getInterfConf().getPoint(p).getVal();
+			((ComposantSimple)this.getListeComposants().get(0)).getEntree().getPoint("Receive_ExternalSocket").setVal(command);
+			((ComposantSimple)this.getListeComposants().get(0)).lancer("Receive_ExternalSocket");
+			break;
+			
+		default:
+			System.out.println("lancer not implemented for Serveur");
+			break;
+		}
 	}
 }

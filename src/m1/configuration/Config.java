@@ -11,14 +11,15 @@ import m1.configuration.ServeurConfig;
 
 public class Config extends Configuration{
 
-	public Config() {
-		super();
+	
+	public Config(ObserveurdeTransit o) {
+		super(o);
 		
 		/************************************************************************Elements propre a la configuration*******************************************************************************************/
 		this.id = "ConfigGenerale";
 		ObserveurdeTransit observ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
 		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConf"));
-		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConf",observ));
+		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConf",o));
 		
 		
 		/************************************************************************Composants de la configuration***********************************************************************************************/
@@ -29,7 +30,7 @@ public class Config extends Configuration{
 		Serveur serv = new Serveur(observ);
 		this.listeComposants.add(serv);
 		
-		ServeurConfig confServ = new ServeurConfig();//config serveur
+		ServeurConfig confServ = new ServeurConfig(observ);//config serveur
 		this.listeComposants.add(confServ);
 		
 		/************************************************************************Connecteurs de la configuration**********************************************************************************************/
@@ -47,6 +48,8 @@ public class Config extends Configuration{
 		/************************************************************************Liaisons Bindings************************************************************************************************************/
 		
 		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entree de ConfServ
+		this.liaisons.put(confServ.getInterfConf().getPoint("SortieConfServ"), serv.getEntree().getPoint("EntreeServeurBinding"));//Binding Sortie de serv -> Entree de ConfServ
+
 		
 		/*********************************************************************************************************************************************************************************/
 		
@@ -54,10 +57,10 @@ public class Config extends Configuration{
 		this.entrees.put(rpc.getFrom().getPoint("EntreeRPCdeClient"), rpc);
 		this.entrees.put(rpc.getFrom().getPoint("EntreeRPCdeServeur"), rpc);
 		this.entrees.put(serv.getEntree().getPoint("EntreeServeur"), serv);
+		this.entrees.put(serv.getEntree().getPoint("EntreeServeurBinding"), serv);
 		this.entrees.put(confServ.getInterfConf().getPoint("EntreeConfServ"), confServ);
 		
-		
-		
+	
 		
 		//3 bindings: entre serveur et serveurConfig, entre Serveur et config et ???
 	}
@@ -67,7 +70,7 @@ public class Config extends Configuration{
 	}
 	
 	public static void main(String[] args){
-		Config conf = new Config();
-		conf.begin("lets-a-go");
+		Config conf = new Config(null);
+		conf.begin("Connexion:blabla");
 	}
 }

@@ -51,7 +51,7 @@ public class ConnectionManager extends ComposantSimple {
 			this.getSortie().getPoint("Send_ExternalSocket").setVal(command);
 			break;
 			
-		case "Receive_DBQuery" : 
+		case "Receive_DBQuery" :
 			command = this.getEntree().getPoint(p).getVal();
 			System.out.println("ConnectionManager : la reponse '" +command+ "' est arrivee dans le port Receive_DBQuery, elle doit donc etre envoyee vers le serveur" );
 			this.getSortie().getPoint("Send_ExternalSocket").setVal(command);

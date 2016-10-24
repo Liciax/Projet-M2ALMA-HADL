@@ -16,7 +16,8 @@ public abstract class Configuration implements ComposantAbstrait{
 	protected InterfaceAPort interfConf;
 	protected String id;
 	
-	public Configuration() {
+	
+	public Configuration(ObserveurdeTransit o) {
 		this.entrees = new HashMap<PointConnexion, ComposantAbstrait>();
 		this.liaisons = new HashMap<PointConnexion, PointConnexion>();
 		this.listeComposants = new ArrayList<ComposantAbstrait>();
