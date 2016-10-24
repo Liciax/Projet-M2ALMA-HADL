@@ -13,11 +13,11 @@ public class SQLRequest extends Connecteur {
 	public SQLRequest(ObserveurdeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueSQLRequest(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
-		this.getFrom().getRoles().add(new RoleEntreeConcret("CalledConnec"));//caller, requis
-		this.getFrom().getRoles().add(new RoleEntreeConcret("CalledDB"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("CallerConnec"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("CallerDB"));//caller, requis
 		
-		this.getTo().getRoles().add(new RoleSortieConcret("CallerConnec",obs));//called, fourni
-		this.getTo().getRoles().add(new RoleSortieConcret("CallerDB",obs));//called, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("CalledConnec",obs));//called, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("CalledDB",obs));//called, fourni
 	}
 	
 	public void lancer(String p){

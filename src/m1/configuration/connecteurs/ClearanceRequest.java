@@ -13,11 +13,11 @@ public class ClearanceRequest extends Connecteur {
 	public ClearanceRequest(ObserveurdeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueClearanceRequest(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
-		this.getFrom().getRoles().add(new RoleEntreeConcret("CalledConnec"));//called, requis
-		this.getFrom().getRoles().add(new RoleEntreeConcret("CalledSecu"));//called, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("CallerConnec"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("CallerSecu"));//caller, requis
 		
-		this.getTo().getRoles().add(new RoleSortieConcret("CallerConnec",obs));//caller, fourni
-		this.getTo().getRoles().add(new RoleSortieConcret("CallerSecu",obs));//caller, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("CalledConnec",obs));//called, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("CalledSecu",obs));//called, fourni
 	}
 	
 	public void lancer(String p){

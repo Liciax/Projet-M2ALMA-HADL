@@ -27,12 +27,12 @@ public class RPC extends Connecteur{
 		String result = glue.traduit(from.getPoint(p));
 		switch (p) {
 		case "EntreeRPCdeClient" :
-			System.out.println("RPC : la commande '" +p+ "' est arrivé dans le port EntreeRPCdeClient du RPC, elle doit donc etre traitée et envoyé vers le port SortieRPCdeServeur" );
+			System.out.println("RPC : la commande '" +p+ "' est arrive dans le port EntreeRPCdeClient du RPC, elle doit donc etre traitee et envoye vers le port SortieRPCdeServeur" );
 			this.getTo().getPoint("SortieRPCdeServeur").setVal(result);
 			break;
 
 		case "EntreeRPCdeServeur" :
-			System.out.println("RPC : la commande '" +p+ "' est arrivé dans le port EntreeRPCdeServeur du RPC, elle doit donc etre traitée et envoyé vers le port SortieRPCdeClient" );
+			System.out.println("RPC : la commande '" +p+ "' est arrive dans le port EntreeRPCdeServeur du RPC, elle doit donc etre traitee et envoye vers le port SortieRPCdeClient" );
 			this.getTo().getPoint("SortieRPCdeClient").setVal(result);
 			break;
 			

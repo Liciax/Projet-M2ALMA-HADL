@@ -13,11 +13,11 @@ public class SecurityQuery extends Connecteur {
 	public SecurityQuery(ObserveurdeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueSecurityQuery(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
-		this.getFrom().getRoles().add(new RoleEntreeConcret("CalledDB"));//caller, requis
-		this.getFrom().getRoles().add(new RoleEntreeConcret("CalledSecu"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("CallerDB"));//caller, requis
+		this.getFrom().getRoles().add(new RoleEntreeConcret("CallerSecu"));//caller, requis
 		
-		this.getTo().getRoles().add(new RoleSortieConcret("CallerDB",obs));//called, fourni
-		this.getTo().getRoles().add(new RoleSortieConcret("CallerSecu",obs));//called, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("CalledDB",obs));//called, fourni
+		this.getTo().getRoles().add(new RoleSortieConcret("CalledSecu",obs));//called, fourni
 	}
 	
 	public void lancer(String p){

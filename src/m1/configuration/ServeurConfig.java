@@ -1,11 +1,9 @@
 package m1.configuration;
 
-import m1.configuration.ComposantsSimples.Client;
 import m1.configuration.ComposantsSimples.ConnectionManager;
 import m1.configuration.ComposantsSimples.Database;
 import m1.configuration.ComposantsSimples.SecurityManager;
 import m1.configuration.connecteurs.ClearanceRequest;
-import m1.configuration.connecteurs.RPC;
 import m1.configuration.connecteurs.SQLRequest;
 import m1.configuration.connecteurs.SecurityQuery;
 import m1.configuration.interfaces.port.PortEntreeConcret;
@@ -27,55 +25,67 @@ public class ServeurConfig extends Configuration {
 		
 		/************************************************************************Composants de la configuration***********************************************************************************************/
 		
-		ConnectionManager ConnMana = new ConnectionManager(observServ);
-		this.listeComposants.add(ConnMana);
+		ConnectionManager connectionManager = new ConnectionManager(observServ);
+		this.listeComposants.add(connectionManager);
 		
-		Database db = new Database(observServ);
-		this.listeComposants.add(db);
+		Database dataBase = new Database(observServ);
+		this.listeComposants.add(dataBase);
 		
-		SecurityManager secuMana = new SecurityManager(observServ);
-		this.listeComposants.add(secuMana);
+		SecurityManager securityManager = new SecurityManager(observServ);
+		this.listeComposants.add(securityManager);
 		
 		/************************************************************************Connecteurs de la configuration**********************************************************************************************/
 		
-		ClearanceRequest clearReq = new ClearanceRequest(observServ);
-		this.listeComposants.add(clearReq);
+		ClearanceRequest clearanceRequest = new ClearanceRequest(observServ);
+		this.listeComposants.add(clearanceRequest);
 		
-		SecurityQuery secuQuery = new SecurityQuery(observServ);
-		this.listeComposants.add(secuQuery);
+		SecurityQuery securityQuery = new SecurityQuery(observServ);
+		this.listeComposants.add(securityQuery);
 		
-		SQLRequest sqlReq = new SQLRequest(observServ);
-		this.listeComposants.add(sqlReq);
+		SQLRequest sqlRequest = new SQLRequest(observServ);
+		this.listeComposants.add(sqlRequest);
 		
 		/************************************************************************Liaisons Attachements********************************************************************************************************/
-//		TODO: changer les noms des string
-		this.liaisons.put(ConnMana.getSortie().getPoint("SortieClient"), clearReq.getFrom().getPoint("EntreeRPCdeClient"));//Client->RPC
-		this.liaisons.put(clearReq.getTo().getPoint("SortieRPCdeClient"), ConnMana.getEntree().getPoint("EntreeClient"));//RCP->Client
-		this.liaisons.put(secuMana.getSortie().getPoint("SortieServeur"), clearReq.getFrom().getPoint("EntreeRPCdeServeur"));//Serveur->RCP
-		this.liaisons.put(clearReq.getTo().getPoint("SortieRPCdeServeur"), secuMana.getEntree().getPoint("EntreeServeur"));//RCP->Serveur
+
+		this.liaisons.put(connectionManager.getSortie().getPoint("Send_SecurityCheck"), clearanceRequest.getFrom().getPoint("CallerConnec"));//connectionManager->clearance Request
+		this.liaisons.put(clearanceRequest.getTo().getPoint("CalledConnec"), connectionManager.getEntree().getPoint("Receive_SecurityCheck"));//clearance Request->connectionManager
+		this.liaisons.put(securityManager.getSortie().getPoint("Send_SecurityAnthPort"), clearanceRequest.getFrom().getPoint("CallerSecu"));//Serveur->RCP
+		this.liaisons.put(clearanceRequest.getTo().getPoint("CalledSecu"), securityManager.getEntree().getPoint("Receive_SecurityAnthPort"));//RCP->Serveur
 		
-		this.liaisons.put(db.getSortie().getPoint("SortieClient"), secuQuery.getFrom().getPoint("EntreeRPCdeClient"));//Client->RPC
-		this.liaisons.put(secuQuery.getTo().getPoint("SortieRPCdeClient"), db.getEntree().getPoint("EntreeClient"));//RCP->Client
-		this.liaisons.put(secuMana.getSortie().getPoint("SortieServeur"), secuQuery.getFrom().getPoint("EntreeRPCdeServeur"));//Serveur->RCP
-		this.liaisons.put(secuQuery.getTo().getPoint("SortieRPCdeServeur"), secuMana.getEntree().getPoint("EntreeServeur"));//RCP->Serveur
+		this.liaisons.put(dataBase.getSortie().getPoint("Send_SecurityManagementPort"), securityQuery.getFrom().getPoint("CallerDB"));//Client->RPC
+		this.liaisons.put(securityQuery.getTo().getPoint("CalledDB"), dataBase.getEntree().getPoint("Receive_SecurityManagementPort"));//RCP->Client
+		this.liaisons.put(securityManager.getSortie().getPoint("Send_ConnexionQueryPort"), securityQuery.getFrom().getPoint("CallerSecu"));//Serveur->RCP
+		this.liaisons.put(securityQuery.getTo().getPoint("CalledSecu"), securityManager.getEntree().getPoint("Receive_ConnexionQueryPort"));//RCP->Serveur
 		
-		this.liaisons.put(ConnMana.getSortie().getPoint("SortieClient"), sqlReq.getFrom().getPoint("EntreeRPCdeClient"));//Client->RPC
-		this.liaisons.put(sqlReq.getTo().getPoint("SortieRPCdeClient"), ConnMana.getEntree().getPoint("EntreeClient"));//RCP->Client
-		this.liaisons.put(db.getSortie().getPoint("SortieServeur"), sqlReq.getFrom().getPoint("EntreeRPCdeServeur"));//Serveur->RCP
-		this.liaisons.put(sqlReq.getTo().getPoint("SortieRPCdeServeur"), db.getEntree().getPoint("EntreeServeur"));//RCP->Serveur
+		this.liaisons.put(connectionManager.getSortie().getPoint("Send_DBQuery"), sqlRequest.getFrom().getPoint("CallerConnec"));//Client->RPC
+		this.liaisons.put(sqlRequest.getTo().getPoint("CalledConnec"), connectionManager.getEntree().getPoint("Receive_DBQuery"));//RCP->Client
+		this.liaisons.put(dataBase.getSortie().getPoint("Send_QueryIntPort"), sqlRequest.getFrom().getPoint("CallerDB"));//Serveur->RCP
+		this.liaisons.put(sqlRequest.getTo().getPoint("CalledDB"), dataBase.getEntree().getPoint("Receive_QueryIntPort"));//RCP->Serveur
 		
 		/************************************************************************Liaisons Bindings************************************************************************************************************/
-//		TODO: mettres les entrées et binding
-//		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entr�e de ConfServ
-//		
-//		/*********************************************************************************************************************************************************************************/
-//		
-//		this.entrees.put(cli.getEntree().getPoint("Entr�eClient"), cli);
-//		this.entrees.put(rpc.getFrom().getPoint("Entr�eRPCdeClient"), rpc);
-//		this.entrees.put(rpc.getFrom().getPoint("Entr�eRPCdeServeur"), rpc);
-//		this.entrees.put(serv.getEntree().getPoint("Entr�eServeur"), serv);
-//		this.entrees.put(confServ.getInterfConf().getPoint("EntreeConfServ"), confServ);
+	
+//		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entree de ConfServ
 		
+		/*********************************************************************************************************************************************************************************/
+		
+		this.entrees.put(connectionManager.getEntree().getPoint("Receive_SecurityCheck"), connectionManager);
+		this.entrees.put(connectionManager.getEntree().getPoint("Receive_ExternalSocket"), connectionManager);
+		this.entrees.put(connectionManager.getEntree().getPoint("Receive_DBQuery"), connectionManager);
+			
+		this.entrees.put(securityManager.getEntree().getPoint("Receive_SecurityAnthPort"), securityManager);
+		this.entrees.put(securityManager.getEntree().getPoint("Receive_ConnexionQueryPort"), securityManager);
+		
+		this.entrees.put(dataBase.getEntree().getPoint("Receive_SecurityManagementPort"), dataBase);
+		this.entrees.put(dataBase.getEntree().getPoint("Receive_QueryIntPort"), dataBase);
+		
+		this.entrees.put(clearanceRequest.getFrom().getPoint("CallerConnec"), clearanceRequest);
+		this.entrees.put(clearanceRequest.getFrom().getPoint("CallerSecu"), clearanceRequest);
+
+		this.entrees.put(securityQuery.getFrom().getPoint("CallerSecu"), securityQuery);
+		this.entrees.put(securityQuery.getFrom().getPoint("CallerDB"), securityQuery);
+		
+		this.entrees.put(sqlRequest.getFrom().getPoint("CallerDB"), sqlRequest);
+		this.entrees.put(sqlRequest.getFrom().getPoint("CallerConnec"), sqlRequest);
 			
 		//3 bindings: entre serveur et serveurConfig, entre Serveur et config et ???
 

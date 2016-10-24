@@ -24,7 +24,7 @@ public class SecurityManager extends ComposantSimple {
 			
 		case "Receive_SecurityAnthPort" : 
 			command = this.getEntree().getPoint(p).getVal();
-			System.out.println("SecurityManager : les identifiants de connexion '" +command+ "' sont arrivés dans le port Receive_SecurityAnthPort, transfert vers la DB pour verifier qu'ils sont valides" );
+			System.out.println("SecurityManager : les identifiants de connexion '" +command+ "' sont arrives dans le port Receive_SecurityAnthPort, transfert vers la DB pour verifier qu'ils sont valides" );
 			this.getSortie().getPoint("Send_ConnexionQueryPort").setVal(command);
 			break;
 			
