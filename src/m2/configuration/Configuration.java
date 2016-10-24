@@ -25,7 +25,7 @@ public abstract class Configuration implements ComposantAbstrait{
 	}
 	
 	public void notifier(PointConnexion p) {
-		System.out.println("Configuration : " +p.getNom() + " souhaite envoyer un message. envoi du message au port correspondant: " + liaisons.get(p).getNom() + " et signalement au ComposantAbstrait correspondant");
+		System.out.println("\nConfiguration : " +p.getNom() + " souhaite envoyer un message. envoi du message au port correspondant: " + liaisons.get(p).getNom() + " et signalement au ComposantAbstrait correspondant");
 		liaisons.get(p).setVal(p.getVal());
 		entrees.get(liaisons.get(p)).lancer(liaisons.get(p).getNom());
 	}

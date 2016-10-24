@@ -7,6 +7,7 @@ import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
 import m2.configuration.ObserveurdeTransit;
+import m2.configuration.interfaces.PointConnexion;
 import m1.configuration.ServeurConfig;
 
 public class Config extends Configuration{
@@ -72,5 +73,11 @@ public class Config extends Configuration{
 	public static void main(String[] args){
 		Config conf = new Config(null);
 		conf.begin("Connexion:blabla");
+		System.out.println("        *          ");
+		System.out.println("        *          ");
+		System.out.println("        *          ");
+		System.out.println("        *          ");
+		System.out.println("        *          ");
+		conf.begin("Query:LOL");
 	}
 }

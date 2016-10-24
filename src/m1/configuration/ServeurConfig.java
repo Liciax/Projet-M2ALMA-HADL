@@ -11,6 +11,7 @@ import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
 import m2.configuration.ObserveurdeTransit;
 import m2.configuration.composant.ComposantSimple;
+import m2.configuration.interfaces.PointConnexion;
 
 public class ServeurConfig extends Configuration {
 
@@ -87,6 +88,8 @@ public class ServeurConfig extends Configuration {
 		
 		this.entrees.put(sqlRequest.getFrom().getPoint("CallerDB"), sqlRequest);
 		this.entrees.put(sqlRequest.getFrom().getPoint("CallerConnec"), sqlRequest);
+		
+		this.entrees.put(this.interfConf.getPoint("SortieConfServ"), this);
 			
 		
 
@@ -96,7 +99,6 @@ public class ServeurConfig extends Configuration {
 //		((Client)this.getListeComposants().get(0)).prepare(command);
 //	}
 
-
 	public void lancer(String p){
 		String command;
 		switch (p) {
@@ -104,6 +106,9 @@ public class ServeurConfig extends Configuration {
 			command = this.getInterfConf().getPoint(p).getVal();
 			((ComposantSimple)this.getListeComposants().get(0)).getEntree().getPoint("Receive_ExternalSocket").setVal(command);
 			((ComposantSimple)this.getListeComposants().get(0)).lancer("Receive_ExternalSocket");
+			break;
+			
+		case "SortieConfServ" : 
 			break;
 			
 		default:
