@@ -42,7 +42,7 @@ public class Database extends ComposantSimple {
 		case "Receive_QueryIntPort" : 
 			command = this.getEntree().getPoint(p).getVal();
 			System.out.println("Database : la Query '" +command+ "' est arrivee dans le port Receive_QueryIntPort, execution..." );
-			reponse = "";// = fonction();
+			reponse = ReponseQuery(command);
 			this.getSortie().getPoint("Send_QueryIntPort").setVal(reponse);
 			break;
 			
