@@ -7,7 +7,7 @@ import m2.configuration.interfaces.PointConnexion;
  * 
  * @author Lenny Lucas
  * @author Alicia Boucard
- * 
+ * Classe Observeur permet d'observer le comportement des composants 
  */
 public class ObserveurDeTransit {
 	

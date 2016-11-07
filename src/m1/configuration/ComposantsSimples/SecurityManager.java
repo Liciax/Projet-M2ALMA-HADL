@@ -14,6 +14,8 @@ public class SecurityManager extends ComposantSimple {
 	
 	public SecurityManager(ObserveurDeTransit obs) {
 		super();
+		this.entree = new InterfaceAPortConcret();
+		this.sortie = new InterfaceAPortConcret();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
 		this.getEntree().getPorts().add(new PortEntreeConcret("Receive_SecurityAnthPort"));//recevoir info du connectionManager
 		this.getEntree().getPorts().add(new PortEntreeConcret("Receive_ConnexionQueryPort"));//recevoir reponse de la DB

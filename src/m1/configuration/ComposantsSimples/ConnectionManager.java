@@ -14,6 +14,8 @@ public class ConnectionManager extends ComposantSimple {
 	
 	public ConnectionManager(ObserveurDeTransit obs) {
 		super();
+		this.entree = new InterfaceAPortConcret();
+		this.sortie = new InterfaceAPortConcret();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
 		this.getEntree().getPorts().add(new PortEntreeConcret("Receive_ExternalSocket"));//recevoir info du Binding
 		this.getEntree().getPorts().add(new PortEntreeConcret("Receive_SecurityCheck"));//recevoir reponse de connexion

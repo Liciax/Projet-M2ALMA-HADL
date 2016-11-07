@@ -16,6 +16,8 @@ public class Client extends ComposantSimple{
 	
 	public Client(ObserveurDeTransit obs) {
 		super();
+		this.entree = new InterfaceAPortConcret();
+		this.sortie = new InterfaceAPortConcret();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
 		this.getEntree().getPorts().add(new PortEntreeConcret("EntreeClient"));
 		this.getEntree().getPorts().add(new PortEntreeConcret("EntreeClientBinding"));

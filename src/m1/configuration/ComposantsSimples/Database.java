@@ -14,6 +14,8 @@ public class Database extends ComposantSimple {
 	
 	public Database(ObserveurDeTransit obs) {
 		super();
+		this.entree = new InterfaceAPortConcret();
+		this.sortie = new InterfaceAPortConcret();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
 		this.getEntree().getPorts().add(new PortEntreeConcret("Receive_SecurityManagementPort"));//recevoir demande de verification d'identifiants
 		this.getEntree().getPorts().add(new PortEntreeConcret("Receive_QueryIntPort"));//recevoir Query

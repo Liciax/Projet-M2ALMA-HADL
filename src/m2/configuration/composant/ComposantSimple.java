@@ -3,55 +3,89 @@ package m2.configuration.composant;
 import java.util.ArrayList;
 import java.util.List;
 
-import m1.configuration.interfaces.InterfaceAPortConcret;
 import m2.configuration.ComposantAbstrait;
 import m2.configuration.interfaces.InterfaceAPort;
 
+/**
+ * 
+ * @author Lenny Lucas
+ * @author Alicia Boucard
+ * La classe abstraite ComposantSimple represente un composant simple du metamodele qui contient une interface entree,une nterface sortie,
+ * des proprietes et des contraintes techniques. 
+ */
 public abstract class ComposantSimple implements ComposantAbstrait{
 	
-		protected List<ContrainteTechnique> ct;
-		protected List<Propriete> proprietes;
-		protected InterfaceAPort entree;
-		protected InterfaceAPort sortie;
+	protected List<ContrainteTechnique> ct;
+	protected List<Propriete> proprietes;
+	protected InterfaceAPort entree;
+	protected InterfaceAPort sortie;
 		
-		public ComposantSimple() {
-			ct = new ArrayList<ContrainteTechnique>();
-			proprietes = new ArrayList<Propriete>();
-			this.entree = new InterfaceAPortConcret();
-			this.sortie = new InterfaceAPortConcret();
-		}
+	/**
+	 * Constructeur de ComposantSimple, cree les listes.
+	 */
+	public ComposantSimple() {
+		ct = new ArrayList<ContrainteTechnique>();
+		proprietes = new ArrayList<Propriete>();
+	}
 		
-		public void lancer(String p){
-			switch (p) {
+	/**
+	 * Methode lancer non implemente dans composant simple.
+	 * @param p une simple string
+	 */
+	public void lancer(String p){
+		switch (p) {
 			default:
 				System.out.println("lancer not implemented for ComposantSimple");
 				break;
-			}
 		}
+	}
 
-		public InterfaceAPort getEntree() {
-			return entree;
-		}
+	/**
+	 * Accesseur de l'interface d'entree du composant simple compose de port.
+	 * @return l'interface d'entree du composant simple compose de port
+	 */
+	public InterfaceAPort getEntree() {
+		return entree;
+	}
+	
+	/**
+	 * Mutateur de l'interface d'entree du composant simple compose de port.
+	 * @param entree l'interface d'entree du composant simple compose de port
+	 */
+	public void setEntree(InterfaceAPort entree) {
+		this.entree = entree;
+	}
 
-		public void setEntree(InterfaceAPort entree) {
-			this.entree = entree;
-		}
+	/**
+	 * Accesseur de l'interface de sortie du composant simple compose de port.
+	 * @return l'interface de sortie du composant simple compose de port
+	 */
+	public InterfaceAPort getSortie() {
+		return sortie;
+	}
 
-		public InterfaceAPort getSortie() {
-			return sortie;
-		}
+	/**
+	 * Mutateur de l'interface de sortie du composant simple compose de port.
+	 * @param sortie l'interface de sortie du composant simple compose de port
+	 */
+	public void setSortie(InterfaceAPort sortie) {
+		this.sortie = sortie;
+	}
 
-		public void setSortie(InterfaceAPort sortie) {
-			this.sortie = sortie;
-		}
+	/**
+	 * Accesseur de la liste des contraintes techniques.
+	 * @return la liste des contraintes techniques
+	 */
+	public List<ContrainteTechnique> getCt() {
+		return ct;
+	}
 
-		public List<ContrainteTechnique> getCt() {
-			return ct;
-		}
-
-		public List<Propriete> getProprietes() {
-			return proprietes;
-		}
-		
+	/**
+	 * Accesseur de la liste des proprietes.
+	 * @return la liste des proprietes
+	 */
+	public List<Propriete> getProprietes() {
+		return proprietes;
+	}
 		
 }
