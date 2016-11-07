@@ -3,6 +3,7 @@ package m1.configuration;
 import m1.configuration.ComposantsSimples.Client;
 import m1.configuration.ComposantsSimples.Serveur;
 import m1.configuration.connecteurs.RPC;
+import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
@@ -20,8 +21,10 @@ public class Config extends Configuration{
 		/************************************************************************Elements propre a la configuration*******************************************************************************************/
 		this.id = "ConfigGenerale";
 		ObserveurdeTransit observ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
+		this.interfaceConfiguration = new InterfaceAPortConcret();
 		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConf"));
 		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConf",observ));
+		
 		
 		
 		/************************************************************************Composants de la configuration***********************************************************************************************/
