@@ -10,10 +10,21 @@ import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.composant.ComposantSimple;
 
+/**
+ * 
+ * @author Lenny Lucas
+ * @author Alicia Boucard
+ * La classe SecurityManager implemente ComposantSimple et possede 2 interfaces : une d'entree et une de sortie. 
+ * Elle est chargee de verifier si les identifiants d'un client sont valides ainsi que de verifier si la base de donnees est occupe ou non
+ */
 public class SecurityManager extends ComposantSimple {
 
-	private List<String> authorizedPasswords;
+	private List<String> authorizedPasswords;//liste des mots de passe autorises
 	
+	/**
+	 * Constructeur de SecurityManager
+	 * @param obs l'observeur qui va prevenir la configuration en cas de fin de traitement
+	 */
 	public SecurityManager(ObserveurDeTransit obs) {
 		super();
 		this.entree = new InterfaceAPortConcret();
@@ -28,6 +39,9 @@ public class SecurityManager extends ComposantSimple {
 		authorizedPasswords.add("ccadd99b16cd3d200c22d6db45d8b6630ef3d936767127347ec8a76ab992c2ea");
 	}
 	
+	/**
+	 * see also {@link m2.configuration.composant.ComposantSimple#lancer(String) lancer}
+	 */
 	public void lancer(String p){
 		String command;
 		switch (p) {

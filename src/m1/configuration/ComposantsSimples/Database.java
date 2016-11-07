@@ -11,10 +11,22 @@ import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.composant.ComposantSimple;
 
+/**
+ * 
+ * @author Lenny Lucas
+ * @author Alicia Boucard
+ * La classe Database implemente ComposantSimple et possede 2 interfaces : une d'entree et une de sortie. 
+ * Elle est chargee de faire le lien vers la Database concrete et d'effectuer les requetes. Elle ne peut etre utilisé par 2 Client en simultanée. 
+ */
 public class Database extends ComposantSimple {
 
-	private boolean occupe = false;
-	private Map<String, String[]> DBConcrete;
+	private boolean occupe = false;//represente si la base de donnee est occupe ou non
+	private Map<String, String[]> DBConcrete;//un mock d'une vraie base de donnee
+	
+	/**
+	 * Constructeur de Database
+	 * @param obs l'observeur qui va prevenir la configuration en cas de fin de traitement
+	 */
 	public Database(ObserveurDeTransit obs) {
 		super();
 		this.entree = new InterfaceAPortConcret();
@@ -31,6 +43,11 @@ public class Database extends ComposantSimple {
 		this.DBConcrete.put("Bob", tab);
 	}
 	
+	/**
+	 * methode qui donne l'etat de la base
+	 * @param token
+	 * @return l'etat de la base
+	 */
 	public String ReponseSecurite(String token) {
 		if(occupe){
 			return "false";
@@ -38,7 +55,12 @@ public class Database extends ComposantSimple {
 		return "true";
 	}
 	
-	public String ReponseQuery(String identifiants) {
+	/**
+	 * methode qui effectue la Query query sur la base et renvoie le resultat
+	 * @param query la query a executer
+	 * @return la reponse
+	 */
+	public String ReponseQuery(String query) {
 		occupe = true;
 		String rep = "";
 		for (String s : this.DBConcrete.get("Bob")) {
@@ -47,6 +69,9 @@ public class Database extends ComposantSimple {
 		return rep;//Mock de la connexion vers une vraie DB avec de vraies queries
 	}
 	
+	/**
+	 * see also {@link m2.configuration.composant.ComposantSimple#lancer(String) lancer}
+	 */
 	public void lancer(String p){
 		String command;
 		String reponse;

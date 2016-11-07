@@ -10,26 +10,35 @@ import m2.configuration.composant.ComposantSimple;
 import m2.configuration.interfaces.PointConnexion;
 import m2.configuration.interfaces.port.Port;
 
+/**
+ * 
+ * @author Lenny Lucas
+ * @author Alicia Boucard
+ * La classe Client implemente ComposantSimple et possede 2 interfaces : une d'entree et une de sortie. 
+ * Elle represente un Client qui peut se connecter et requeter sur une base de donnee.
+ */
 public class Client extends ComposantSimple{
 
-	
+	/**
+	 * Constructeur de Client
+	 * @param obs l'observeur qui va prevenir la configuration en cas de fin de traitement
+	 */
 	public Client(ObserveurDeTransit obs) {
 		super();
 		this.entree = new InterfaceAPortConcret();
 		this.sortie = new InterfaceAPortConcret();
-		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
+		
+		this.setEntree(new InterfaceAPortConcret());
 		this.getEntree().getPorts().add(new PortEntreeConcret("EntreeClient"));
 		this.getEntree().getPorts().add(new PortEntreeConcret("EntreeClientBinding"));
-		this.setSortie(new InterfaceAPortConcret());//lui ajouter 1 port vers RCP + obs
+		
+		this.setSortie(new InterfaceAPortConcret());
 		this.getSortie().getPorts().add(new PortSortieConcret("SortieClient", obs));
 	}
 	
-//	public void prepare(String commandToSend) {
-//		LOGGER.info("Nous allons envoyer la commande " + commandToSend);
-//		this.getSortie().getPoint("SortieClient").setVal(commandToSend);
-////		this.lancer("EntreeClient");
-//	}
-	
+	/**
+	 * see also {@link m2.configuration.composant.ComposantSimple#lancer(String) lancer}
+	 */
 	public void lancer(String p){
 		LOGGER.info("Client : signal de la configuration reçu: le port " + p + " viens de recevoir un message qu'il faut traiter");
 		String command;

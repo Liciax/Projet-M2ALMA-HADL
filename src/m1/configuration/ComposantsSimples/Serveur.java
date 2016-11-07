@@ -8,9 +8,18 @@ import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.composant.ComposantSimple;
 
+/**
+ * @author Lenny Lucas
+ * @author Alicia Boucard
+ * La classe Serveur implemente ComposantSimple et possede 2 interfaces : une d'entree et une de sortie. 
+ * Elle est chargee de recevoir les requetes du client et de les traiter avant de les transferer vers le composant suivant. 
+ */
 public class Serveur extends ComposantSimple{
 
-	
+	/**
+	 * Constructeur de Serveur
+	 * @param obs l'observeur qui va prevenir la configuration en cas de fin de traitement
+	 */
 	public Serveur(ObserveurDeTransit obs) {
 		super();
 		this.entree = new InterfaceAPortConcret();
@@ -23,6 +32,9 @@ public class Serveur extends ComposantSimple{
 		this.getSortie().getPorts().add(new PortSortieConcret("SortieServeurBinding", obs));//pour transferer vers la config du serveur
 	}
 	
+	/**
+	 * see also {@link m2.configuration.composant.ComposantSimple#lancer(String) lancer}
+	 */
 	public void lancer(String p){
 		String command;
 		switch (p) {

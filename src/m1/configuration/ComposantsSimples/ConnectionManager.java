@@ -8,9 +8,20 @@ import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.composant.ComposantSimple;
 
+/**
+ * 
+ * @author Lenny Lucas
+ * @author Alicia Boucard
+ * La classe ConnectionManager implemente ComposantSimple et possede 2 interfaces : une d'entree et une de sortie. 
+ * Elle est chargee de comprendre des requetes et de les router vers la bonne partie du systeme.
+ */
 public class ConnectionManager extends ComposantSimple {
 
 	
+	/**
+	 * Constructeur de ConnectionManager
+	 * @param obs l'observeur qui va prevenir la configuration en cas de fin de traitement
+	 */
 	public ConnectionManager(ObserveurDeTransit obs) {
 		super();
 		this.entree = new InterfaceAPortConcret();
@@ -25,6 +36,10 @@ public class ConnectionManager extends ComposantSimple {
 		this.getSortie().getPorts().add(new PortSortieConcret("Send_DBQuery", obs));//envoyer une requete
 	}
 	
+	/**
+	 * methode qui aiguille le message vers le bon connecteur en fonction de son contenu
+	 * @param message le message a aiguiller
+	 */
 	public void aiguillage(String message) {
 		String type = message.split(":")[0];
 		String value = message.split(":")[1];
@@ -42,6 +57,9 @@ public class ConnectionManager extends ComposantSimple {
 		}
 	}
 	
+	/**
+	 * see also {@link m2.configuration.composant.ComposantSimple#lancer(String) lancer}
+	 */
 	public void lancer(String p){
 		String command;
 		switch (p) {
