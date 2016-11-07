@@ -2,7 +2,8 @@ package m2.configuration;
 
 /**
  * 
- * @author Lenny Lucas - Alicia Boucard
+ * @author Lenny Lucas
+ * @author Alicia Boucard
  * L'interface ComposantAbstrait permet d'avoir une généricité sur toutes les classes de notre architecture à 
  * composants.
  */
