@@ -15,7 +15,6 @@ import m2.configuration.interfaces.role.Role;
 
 public class RPC extends Connecteur{
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public RPC(ObserveurDeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueRPC(), new InterfaceARoleConcret(), new InterfaceARoleConcret());

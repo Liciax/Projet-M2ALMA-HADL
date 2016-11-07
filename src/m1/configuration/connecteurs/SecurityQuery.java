@@ -12,7 +12,6 @@ import m2.configuration.connecteur.TypeConnecteur;
 
 public class SecurityQuery extends Connecteur {
 	
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public SecurityQuery(ObserveurDeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueSecurityQuery(), new InterfaceARoleConcret(), new InterfaceARoleConcret());

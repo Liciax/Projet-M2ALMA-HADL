@@ -7,7 +7,6 @@ import m2.configuration.interfaces.port.PortSortie;
 
 public class PortSortieConcret extends PortSortie {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public PortSortieConcret(String nom, ObserveurDeTransit o) {
 		super(nom, o);

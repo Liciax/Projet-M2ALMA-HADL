@@ -7,7 +7,6 @@ import m2.configuration.interfaces.role.RoleSortie;
 
 public class RoleSortieConcret extends RoleSortie {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public RoleSortieConcret(String nom, ObserveurDeTransit obs) {
 		super(nom, obs);

@@ -8,6 +8,7 @@ import m1.configuration.ComposantsSimples.SecurityManager;
 import m1.configuration.connecteurs.ClearanceRequest;
 import m1.configuration.connecteurs.SQLRequest;
 import m1.configuration.connecteurs.SecurityQuery;
+import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
@@ -16,7 +17,6 @@ import m2.configuration.interfaces.PointConnexion;
 
 public class ServeurConfig extends Configuration {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public ServeurConfig(ObserveurDeTransit o) {
 		super(o);
@@ -25,6 +25,7 @@ public class ServeurConfig extends Configuration {
 
 		this.id = "ConfigServeur";
 		ObserveurDeTransit observServ = new ObserveurDeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
+		this.interfaceConfiguration = new InterfaceAPortConcret();
 		this.getInterfaceConfiguration().getPorts().add(new PortEntreeConcret("EntreeConfServ"));
 		this.getInterfaceConfiguration().getPorts().add(new PortSortieConcret("SortieConfServ", o));
 		
@@ -103,8 +104,8 @@ public class ServeurConfig extends Configuration {
 		String command = null;
 		switch (p) {
 		case "EntreeConfServ" : 
-			LOGGER.info("Lien Binding : la commande " + command + "doit etre transferée vers le connectionManager");
 			command = this.getInterfaceConfiguration().getPoint(p).getVal();
+			LOGGER.info("Lien Binding : la commande " + command + "doit etre transferée vers le connectionManager");
 			((ComposantSimple)this.getListeComposants().get(0)).getEntree().getPoint("Receive_ExternalSocket").setVal(command);
 			((ComposantSimple)this.getListeComposants().get(0)).lancer("Receive_ExternalSocket");
 			break;

@@ -7,7 +7,6 @@ import m2.configuration.interfaces.PointConnexion;
 
 public class GlueSecurityQuery extends Glue {
 	
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public String traduit(PointConnexion p) {
 		LOGGER.info("GlueSecurityQuery : traduction par la glue");

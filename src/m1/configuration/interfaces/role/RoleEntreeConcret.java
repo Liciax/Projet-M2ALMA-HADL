@@ -6,7 +6,6 @@ import m2.configuration.interfaces.role.RoleEntree;
 
 public class RoleEntreeConcret extends RoleEntree {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public RoleEntreeConcret(String nom) {
 		super(nom);

@@ -1,5 +1,8 @@
 package m1.configuration.ComposantsSimples;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import m1.configuration.ObserveurDeTransit;
@@ -10,8 +13,8 @@ import m2.configuration.composant.ComposantSimple;
 
 public class Database extends ComposantSimple {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
-	
+	private boolean occupe = false;
+	private Map<String, String[]> DBConcrete;
 	public Database(ObserveurDeTransit obs) {
 		super();
 		this.entree = new InterfaceAPortConcret();
@@ -22,14 +25,26 @@ public class Database extends ComposantSimple {
 		this.setSortie(new InterfaceAPortConcret());//lui ajouter 1 port vers RCP + obs
 		this.getSortie().getPorts().add(new PortSortieConcret("Send_SecurityManagementPort", obs));//envoyer si les identifiants sont dans la DB
 		this.getSortie().getPorts().add(new PortSortieConcret("Send_QueryIntPort", obs));//envoyer reponse Query
+		
+		this.DBConcrete = new HashMap<String,String[]>();
+		String[] tab = {"Poireau", "Carotte", "Aubergine"};
+		this.DBConcrete.put("Bob", tab);
 	}
 	
-	public String ReponseSecurite(String identifiants) {
-		return "true";//on considere que toute demande de connexion est acceptee
+	public String ReponseSecurite(String token) {
+		if(occupe){
+			return "false";
+		}
+		return "true";
 	}
 	
 	public String ReponseQuery(String identifiants) {
-		return "Resultat de la query";//Mock de la connexion vers une vraie DB avec de vraies queries
+		occupe = true;
+		String rep = "";
+		for (String s : this.DBConcrete.get("Bob")) {
+			rep += s + ";";
+		}
+		return rep;//Mock de la connexion vers une vraie DB avec de vraies queries
 	}
 	
 	public void lancer(String p){
@@ -39,7 +54,7 @@ public class Database extends ComposantSimple {
 			
 		case "Receive_SecurityManagementPort" : 
 			command = this.getEntree().getPoint(p).getVal();
-			LOGGER.info("Database : les identifiants de connexion '" +command+ "' sont arrives dans le port Receive_SecurityManagementPort, verification de leur validite..." );
+			LOGGER.info("Database : une demande de verification de l'etat est venu du SecurityManager" );
 			//Check DB et retour "vrai" ou "faux"
 			reponse = ReponseSecurite(command);
 			this.getSortie().getPoint("Send_SecurityManagementPort").setVal(reponse);

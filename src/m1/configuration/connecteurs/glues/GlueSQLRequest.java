@@ -7,7 +7,6 @@ import m2.configuration.interfaces.PointConnexion;
 
 public class GlueSQLRequest extends Glue {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public String traduit(PointConnexion p) {
 		LOGGER.info("GlueClearanceRequest : traduction par la glue");
