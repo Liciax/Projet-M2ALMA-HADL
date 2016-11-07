@@ -36,14 +36,11 @@ public class Client extends ComposantSimple{
 		switch (p) {
 		case "EntreeClient" :
 			command = this.getEntree().getPoint(p).getVal();
-			LOGGER.info("Le client a recu la commande '" + command + "'");
-//			LOGGER.info("Client : la commande '" +command+ "' est arrivee dans le port EntreeClient du client, elle doit donc etre traitee et envoye vers le port SortieClient" );
-//			this.getSortie().getPoint("SortieClient").setVal(command);
+			LOGGER.info("Le client a recu la reponse '" + command + "'");
 			break;
 		case "EntreeClientBinding" :
 			command = this.getEntree().getPoint(p).getVal();
 			LOGGER.info("Le client a recu la commande '" + command + "' de l'exterieure");
-//			LOGGER.info("Client : la commande '" +command+ "' est arrivee dans le port EntreeClient du client, elle doit donc etre traitee et envoye vers le port SortieClient" );
 			this.getSortie().getPoint("SortieClient").setVal(command);
 			break;
 		default:
