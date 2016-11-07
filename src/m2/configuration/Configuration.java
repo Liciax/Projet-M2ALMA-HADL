@@ -3,6 +3,7 @@ package m2.configuration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Logger;
 
 import m1.configuration.interfaces.InterfaceAPortConcret;
 import m2.configuration.interfaces.InterfaceAPort;
@@ -16,6 +17,7 @@ import m2.configuration.interfaces.PointConnexion;
  */
 public abstract class Configuration implements ComposantAbstrait {
 
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	/* Associe les points de connexion de sortie d'un composant abstrait avec les points de connexion d'entree 
 	   d'un composant abstrait correspondants */
 	protected HashMap<PointConnexion, PointConnexion> liaisons;
@@ -34,7 +36,7 @@ public abstract class Configuration implements ComposantAbstrait {
 	}
 	
 	public void notifier(PointConnexion p) {
-		System.out.println("\nConfiguration : " +p.getNom() + " souhaite envoyer un message. envoi du message au port correspondant: " + liaisons.get(p).getNom() + " et signalement au ComposantAbstrait correspondant");
+		LOGGER.info(System.getProperty("line.separator") + "************************************************************" + System.getProperty("line.separator") + "Configuration : " +p.getNom() + " souhaite envoyer un message. envoi du message au port correspondant: " + liaisons.get(p).getNom() + " et signalement au ComposantAbstrait correspondant" + System.getProperty("line.separator") + "************************************************************" );
 		liaisons.get(p).setVal(p.getVal());
 		entrees.get(liaisons.get(p)).lancer(liaisons.get(p).getNom());
 	}

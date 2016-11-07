@@ -1,5 +1,7 @@
 package m1.configuration.connecteurs;
 
+import java.util.logging.Logger;
+
 import m1.configuration.connecteurs.glues.GlueRPC;
 import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.InterfaceARoleConcret;
@@ -13,6 +15,8 @@ import m2.configuration.interfaces.role.Role;
 
 public class RPC extends Connecteur{
 
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
+	
 	public RPC(ObserveurdeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueRPC(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
@@ -27,17 +31,17 @@ public class RPC extends Connecteur{
 		String result = glue.traduit(from.getPoint(p));
 		switch (p) {
 		case "EntreeRPCdeClient" :
-			System.out.println("RPC : la commande '" +p+ "' est arrive dans le port EntreeRPCdeClient du RPC, elle doit donc etre traitee et envoye vers le port SortieRPCdeServeur" );
+			LOGGER.info("RPC : la commande '" +p+ "' est arrive dans le port EntreeRPCdeClient du RPC, elle doit donc etre traitee et envoye vers le port SortieRPCdeServeur" );
 			this.getTo().getPoint("SortieRPCdeServeur").setVal(result);
 			break;
 
 		case "EntreeRPCdeServeur" :
-			System.out.println("RPC : la commande '" +p+ "' est arrive dans le port EntreeRPCdeServeur du RPC, elle doit donc etre traitee et envoye vers le port SortieRPCdeClient" );
+			LOGGER.info("RPC : la commande '" +p+ "' est arrive dans le port EntreeRPCdeServeur du RPC, elle doit donc etre traitee et envoye vers le port SortieRPCdeClient" );
 			this.getTo().getPoint("SortieRPCdeClient").setVal(result);
 			break;
 			
 		default:
-			System.out.println("lancer not implemented for Connecteur");
+			LOGGER.info("lancer not implemented for Connecteur");
 			break;
 		}
 	}

@@ -1,5 +1,7 @@
 package m1.configuration;
 
+import java.util.logging.Logger;
+
 import m1.configuration.ComposantsSimples.ConnectionManager;
 import m1.configuration.ComposantsSimples.Database;
 import m1.configuration.ComposantsSimples.SecurityManager;
@@ -15,6 +17,8 @@ import m2.configuration.interfaces.PointConnexion;
 
 public class ServeurConfig extends Configuration {
 
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
+	
 	public ServeurConfig(ObserveurdeTransit o) {
 		super(o);
 		
@@ -95,14 +99,12 @@ public class ServeurConfig extends Configuration {
 
 	}
 	
-//	public void begin(String command) {
-//		((Client)this.getListeComposants().get(0)).prepare(command);
-//	}
 
 	public void lancer(String p){
-		String command;
+		String command = null;
 		switch (p) {
 		case "EntreeConfServ" : 
+			LOGGER.info("Lien Binding : la commande " + command + "doit etre transferée vers le connectionManager");
 			command = this.getInterfConf().getPoint(p).getVal();
 			((ComposantSimple)this.getListeComposants().get(0)).getEntree().getPoint("Receive_ExternalSocket").setVal(command);
 			((ComposantSimple)this.getListeComposants().get(0)).lancer("Receive_ExternalSocket");

@@ -1,5 +1,7 @@
 package m1.configuration.ComposantsSimples;
 
+import java.util.logging.Logger;
+
 import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
@@ -8,6 +10,8 @@ import m2.configuration.composant.ComposantSimple;
 
 public class Serveur extends ComposantSimple{
 
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
+	
 	public Serveur(ObserveurdeTransit obs) {
 		super();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
@@ -23,16 +27,16 @@ public class Serveur extends ComposantSimple{
 		switch (p) {
 		case "EntreeServeur" : 
 			command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeur du serveur, elle doit donc etre traitee et envoye vers le port SortieServeur" );
+			LOGGER.info("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeur du serveur, elle doit donc etre traitee et envoye vers le port SortieServeur" );
 			this.getSortie().getPoint("SortieServeurBinding").setVal(command);
 			break;
 		case "EntreeServeurBinding" : 
 			command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeurBinding du serveur, elle doit donc etre traitee et envoye vers le port Client" );
+			LOGGER.info("Serveur : la commande '" +command+ "' est arrivee dans le port EntreeServeurBinding du serveur, elle doit donc etre traitee et envoye vers le port Client" );
 			this.getSortie().getPoint("SortieServeur").setVal(command);
 			break;
 		default:
-			System.out.println("lancer not implemented for Serveur");
+			LOGGER.info("lancer not implemented for Serveur");
 			break;
 		}
 	}

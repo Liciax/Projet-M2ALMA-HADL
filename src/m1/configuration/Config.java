@@ -8,12 +8,12 @@ import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
 import m2.configuration.ObserveurdeTransit;
-import m2.configuration.composant.ComposantSimple;
-import m2.configuration.interfaces.PointConnexion;
 import m1.configuration.ServeurConfig;
+import java.util.logging.Logger;
 
 public class Config extends Configuration{
 
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public Config(ObserveurdeTransit o) {
 		super(o);
@@ -75,9 +75,10 @@ public class Config extends Configuration{
 	}
 	
 	public void lancer(String p){
-		String command;
+		String command = null;
 		switch (p) {
 		case "EntreeConf" : 
+			LOGGER.info("Lien Binding : la commande " + command + "doit etre transferée vers le client");
 			command = this.getInterfConf().getPoint(p).getVal();
 			this.getInterfConf().getPoint("SortieConf").setVal(command);
 			break;
@@ -96,14 +97,12 @@ public class Config extends Configuration{
 //	}
 	
 	public static void main(String[] args){
+		Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 		Config conf = new Config(null);
 		conf.getInterfConf().getPoint("EntreeConf").setVal("Connexion:blabla");
+		String sepa = "        *          " + System.getProperty("line.separator");
 		conf.lancer("EntreeConf");
-		System.out.println("        *          ");
-		System.out.println("        *          ");
-		System.out.println("        *          ");
-		System.out.println("        *          ");
-		System.out.println("        *          ");
+		LOGGER.info(sepa + sepa + sepa +sepa);
 		conf.getInterfConf().getPoint("EntreeConf").setVal("Query:LOL");
 		conf.lancer("EntreeConf");
 	}
