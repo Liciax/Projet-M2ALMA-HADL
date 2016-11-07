@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import m2.configuration.connecteur.Glue;
 import m2.configuration.interfaces.PointConnexion;
+import m2.configuration.interfaces.role.Role;
 
 public class GlueClearanceRequest extends Glue {
 
