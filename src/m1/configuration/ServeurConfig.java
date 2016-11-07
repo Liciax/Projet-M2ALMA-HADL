@@ -92,7 +92,7 @@ public class ServeurConfig extends Configuration {
 		this.entrees.put(sqlRequest.getFrom().getPoint("CallerDB"), sqlRequest);
 		this.entrees.put(sqlRequest.getFrom().getPoint("CallerConnec"), sqlRequest);
 		
-		this.entrees.put(this.interfConf.getPoint("SortieConfServ"), this);
+		this.entrees.put(this.interfaceConfiguration.getPoint("SortieConfServ"), this);
 			
 		
 

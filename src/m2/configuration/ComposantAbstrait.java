@@ -1,9 +1,15 @@
 package m2.configuration;
 
+/**
+ * 
+ * @author Lenny Lucas - Alicia Boucard
+ * L'interface ComposantAbstrait permet d'avoir une généricité sur toutes les classes de notre architecture à 
+ * composants.
+ */
 public interface ComposantAbstrait {
 
-	/** methode qui, lorsqu'elle est appelee, signifie qu'une information viens d'arriver dans un port d'entree
-	 * @param p le port qui viens d'etre remplis
+	/** Methode qui, lorsqu'elle est appelee, signifie qu'une information vient d'arriver dans un port d'entree
+	 * @param p le port qui vient d'être rempli par 
 	 */
 	public void lancer(String p);
 }

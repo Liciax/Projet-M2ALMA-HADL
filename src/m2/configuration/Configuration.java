@@ -9,14 +9,22 @@ import m1.configuration.interfaces.InterfaceAPortConcret;
 import m2.configuration.interfaces.InterfaceAPort;
 import m2.configuration.interfaces.PointConnexion;
 
-public abstract class Configuration implements ComposantAbstrait{
+/**
+ * 
+ * @author Lenny Lucas - Alicia Boucard
+ * La classe abstraite Configuration represente la configuration du metamodele, elle rassemble tous les composants 
+ * et connecteurs et défini la façon dont ils sont reliés. 
+ */
+public abstract class Configuration implements ComposantAbstrait {
 
 	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
-	
-	protected HashMap<PointConnexion, PointConnexion> liaisons; //associe les sorties avec les entrées correspondantes
-	protected HashMap<PointConnexion, ComposantAbstrait> entrees; //pour un port/role donné, donne le ComposantAbstrait associe
+	/* Associe les points de connexion de sortie d'un composant abstrait avec les points de connexion d'entree 
+	   d'un composant abstrait correspondants */
+	protected HashMap<PointConnexion, PointConnexion> liaisons;
+	/* Associe le port/role d'entree donne avec le composant abstrait qui le contient */
+	protected HashMap<PointConnexion, ComposantAbstrait> entrees;
 	protected List<ComposantAbstrait> listeComposants;
-	protected InterfaceAPort interfConf;
+	protected InterfaceAPort interfaceConfiguration;
 	protected String id;
 	
 	
@@ -24,7 +32,7 @@ public abstract class Configuration implements ComposantAbstrait{
 		this.entrees = new HashMap<PointConnexion, ComposantAbstrait>();
 		this.liaisons = new HashMap<PointConnexion, PointConnexion>();
 		this.listeComposants = new ArrayList<ComposantAbstrait>();
-		this.interfConf = new InterfaceAPortConcret();
+		this.interfaceConfiguration = new InterfaceAPortConcret();
 	}
 	
 	public void notifier(PointConnexion p) {
@@ -59,11 +67,11 @@ public abstract class Configuration implements ComposantAbstrait{
 	}
 
 	public InterfaceAPort getInterfConf() {
-		return interfConf;
+		return interfaceConfiguration;
 	}
 
 	public void setInterfConf(InterfaceAPort interfConf) {
-		this.interfConf = interfConf;
+		this.interfaceConfiguration = interfConf;
 	}
 	
 	public List<ComposantAbstrait> getListeComposants() {
@@ -77,8 +85,4 @@ public abstract class Configuration implements ComposantAbstrait{
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	
-	
-	
 }
