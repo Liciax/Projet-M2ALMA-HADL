@@ -7,23 +7,23 @@ import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
-import m2.configuration.ObserveurdeTransit;
 import m1.configuration.ServeurConfig;
+
 import java.util.logging.Logger;
 
 public class Config extends Configuration{
 
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
-	public Config(ObserveurdeTransit o) {
+	public Config(ObserveurDeTransit o) {
 		super(o);
 		
 		/************************************************************************Elements propre a la configuration*******************************************************************************************/
 		this.id = "ConfigGenerale";
-		ObserveurdeTransit observ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
+		ObserveurDeTransit observ = new ObserveurDeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
 		this.interfaceConfiguration = new InterfaceAPortConcret();
-		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConf"));
-		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConf",observ));
+		this.getInterfaceConfiguration().getPorts().add(new PortEntreeConcret("EntreeConf"));
+		this.getInterfaceConfiguration().getPorts().add(new PortSortieConcret("SortieConf",observ));
 		
 		
 		
@@ -52,14 +52,14 @@ public class Config extends Configuration{
 		
 		/************************************************************************Liaisons Bindings************************************************************************************************************/
 		
-		this.liaisons.put(this.getInterfConf().getPoint("SortieConf"), cli.getEntree().getPoint("EntreeClientBinding"));//Binding entree Config -> entree Client
-		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfConf().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entree de ConfServ
-		this.liaisons.put(confServ.getInterfConf().getPoint("SortieConfServ"), serv.getEntree().getPoint("EntreeServeurBinding"));//Binding Sortie de ConfServ -> Entree de serv
+		this.liaisons.put(this.getInterfaceConfiguration().getPoint("SortieConf"), cli.getEntree().getPoint("EntreeClientBinding"));//Binding entree Config -> entree Client
+		this.liaisons.put(serv.getSortie().getPoint("SortieServeurBinding"), confServ.getInterfaceConfiguration().getPoint("EntreeConfServ"));//Binding Sortie de serv -> Entree de ConfServ
+		this.liaisons.put(confServ.getInterfaceConfiguration().getPoint("SortieConfServ"), serv.getEntree().getPoint("EntreeServeurBinding"));//Binding Sortie de ConfServ -> Entree de serv
 
 		
 		/*********************************************************************************************************************************************************************************/
 		
-		this.entrees.put(this.getInterfConf().getPoint("EntreeConf"), this);
+		this.entrees.put(this.getInterfaceConfiguration().getPoint("EntreeConf"), this);
 		this.entrees.put(cli.getEntree().getPoint("EntreeClientBinding"), cli);
 		
 		this.entrees.put(cli.getEntree().getPoint("EntreeClient"), cli);
@@ -67,7 +67,7 @@ public class Config extends Configuration{
 		this.entrees.put(rpc.getFrom().getPoint("EntreeRPCdeServeur"), rpc);
 		this.entrees.put(serv.getEntree().getPoint("EntreeServeur"), serv);
 		this.entrees.put(serv.getEntree().getPoint("EntreeServeurBinding"), serv);
-		this.entrees.put(confServ.getInterfConf().getPoint("EntreeConfServ"), confServ);
+		this.entrees.put(confServ.getInterfaceConfiguration().getPoint("EntreeConfServ"), confServ);
 		
 	
 		
@@ -79,8 +79,8 @@ public class Config extends Configuration{
 		switch (p) {
 		case "EntreeConf" : 
 			LOGGER.info("Lien Binding : la commande " + command + "doit etre transferée vers le client");
-			command = this.getInterfConf().getPoint(p).getVal();
-			this.getInterfConf().getPoint("SortieConf").setVal(command);
+			command = this.getInterfaceConfiguration().getPoint(p).getVal();
+			this.getInterfaceConfiguration().getPoint("SortieConf").setVal(command);
 			break;
 			
 		case "SortieConf" : 
@@ -99,11 +99,11 @@ public class Config extends Configuration{
 	public static void main(String[] args){
 		Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 		Config conf = new Config(null);
-		conf.getInterfConf().getPoint("EntreeConf").setVal("Connexion:blabla");
+		conf.getInterfaceConfiguration().getPoint("EntreeConf").setVal("Connexion:blabla");
 		String sepa = "        *          " + System.getProperty("line.separator");
 		conf.lancer("EntreeConf");
 		LOGGER.info(sepa + sepa + sepa +sepa);
-		conf.getInterfConf().getPoint("EntreeConf").setVal("Query:LOL");
+		conf.getInterfaceConfiguration().getPoint("EntreeConf").setVal("Query:LOL");
 		conf.lancer("EntreeConf");
 	}
 }

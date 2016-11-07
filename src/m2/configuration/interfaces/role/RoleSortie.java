@@ -1,21 +1,21 @@
 package m2.configuration.interfaces.role;
 
-import m2.configuration.ObserveurdeTransit;
+import m1.configuration.ObserveurDeTransit;
 
 public abstract class RoleSortie extends Role {
 
-	private ObserveurdeTransit obs;
+	private ObserveurDeTransit obs;
 
-	public RoleSortie(String nom, ObserveurdeTransit obs) {
+	public RoleSortie(String nom, ObserveurDeTransit obs) {
 		super(nom);
 		this.obs = obs;
 	}
 	
-	public ObserveurdeTransit getObs() {
+	public ObserveurDeTransit getObs() {
 		return obs;
 	}
 
-	public void setObs(ObserveurdeTransit obs) {
+	public void setObs(ObserveurDeTransit obs) {
 		this.obs = obs;
 	}
 

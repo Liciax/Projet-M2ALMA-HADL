@@ -8,7 +8,7 @@ package m2.configuration;
  */
 public interface ComposantAbstrait {
 
-	/** Methode qui, lorsqu'elle est appelee, signifie qu'une information vient d'arriver dans un port d'entree
+	/** Methode qui, lorsqu'elle est appelee, signifie qu'une information vient d'arriver dans un port d'entree.
 	 * @param p le port qui vient d'être rempli par 
 	 */
 	public void lancer(String p);

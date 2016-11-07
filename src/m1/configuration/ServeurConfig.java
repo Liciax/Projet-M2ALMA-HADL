@@ -11,7 +11,6 @@ import m1.configuration.connecteurs.SecurityQuery;
 import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
 import m2.configuration.Configuration;
-import m2.configuration.ObserveurdeTransit;
 import m2.configuration.composant.ComposantSimple;
 import m2.configuration.interfaces.PointConnexion;
 
@@ -19,15 +18,15 @@ public class ServeurConfig extends Configuration {
 
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
-	public ServeurConfig(ObserveurdeTransit o) {
+	public ServeurConfig(ObserveurDeTransit o) {
 		super(o);
 		
 		/************************************************************************Elements propre a la configuration*******************************************************************************************/
 
 		this.id = "ConfigServeur";
-		ObserveurdeTransit observServ = new ObserveurdeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
-		this.getInterfConf().getPorts().add(new PortEntreeConcret("EntreeConfServ"));
-		this.getInterfConf().getPorts().add(new PortSortieConcret("SortieConfServ", o));
+		ObserveurDeTransit observServ = new ObserveurDeTransit(this);//observeur qui va regarder tout les ports de sortie pour lancer l'envoi de donnees
+		this.getInterfaceConfiguration().getPorts().add(new PortEntreeConcret("EntreeConfServ"));
+		this.getInterfaceConfiguration().getPorts().add(new PortSortieConcret("SortieConfServ", o));
 		
 		/************************************************************************Composants de la configuration***********************************************************************************************/
 		
@@ -70,7 +69,7 @@ public class ServeurConfig extends Configuration {
 		
 		/************************************************************************Liaisons Bindings************************************************************************************************************/
 	
-		this.liaisons.put(connectionManager.getSortie().getPoint("Send_ExternalSocket"), this.getInterfConf().getPoint("SortieConfServ"));//Binding Sortie de serv -> Entree de ConfServ
+		this.liaisons.put(connectionManager.getSortie().getPoint("Send_ExternalSocket"), this.getInterfaceConfiguration().getPoint("SortieConfServ"));//Binding Sortie de serv -> Entree de ConfServ
 		
 		/*********************************************************************************************************************************************************************************/
 		
@@ -105,7 +104,7 @@ public class ServeurConfig extends Configuration {
 		switch (p) {
 		case "EntreeConfServ" : 
 			LOGGER.info("Lien Binding : la commande " + command + "doit etre transferée vers le connectionManager");
-			command = this.getInterfConf().getPoint(p).getVal();
+			command = this.getInterfaceConfiguration().getPoint(p).getVal();
 			((ComposantSimple)this.getListeComposants().get(0)).getEntree().getPoint("Receive_ExternalSocket").setVal(command);
 			((ComposantSimple)this.getListeComposants().get(0)).lancer("Receive_ExternalSocket");
 			break;

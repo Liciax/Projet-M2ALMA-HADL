@@ -2,17 +2,17 @@ package m1.configuration.ComposantsSimples;
 
 import java.util.logging.Logger;
 
+import m1.configuration.ObserveurDeTransit;
 import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
-import m2.configuration.ObserveurdeTransit;
 import m2.configuration.composant.ComposantSimple;
 
 public class ConnectionManager extends ComposantSimple {
 
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
-	public ConnectionManager(ObserveurdeTransit obs) {
+	public ConnectionManager(ObserveurDeTransit obs) {
 		super();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
 		this.getEntree().getPorts().add(new PortEntreeConcret("Receive_ExternalSocket"));//recevoir info du Binding

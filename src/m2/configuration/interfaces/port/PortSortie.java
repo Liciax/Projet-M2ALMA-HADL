@@ -1,21 +1,21 @@
 package m2.configuration.interfaces.port;
 
-import m2.configuration.ObserveurdeTransit;
+import m1.configuration.ObserveurDeTransit;
 
 public abstract class PortSortie extends Port {
 
-	private ObserveurdeTransit obs;
+	private ObserveurDeTransit obs;
 	
-	public PortSortie(String nom, ObserveurdeTransit o) {
+	public PortSortie(String nom, ObserveurDeTransit o) {
 		super(nom);
 		this.obs = o;
 	}
 
-	public ObserveurdeTransit getObs() {
+	public ObserveurDeTransit getObs() {
 		return obs;
 	}
 
-	public void setObs(ObserveurdeTransit obs) {
+	public void setObs(ObserveurDeTransit obs) {
 		this.obs = obs;
 	}
 

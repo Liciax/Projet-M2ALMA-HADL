@@ -1,11 +1,11 @@
 package m1.configuration.connecteurs;
 import java.util.logging.Logger;
 
+import m1.configuration.ObserveurDeTransit;
 import m1.configuration.connecteurs.glues.GlueSecurityQuery;
 import m1.configuration.interfaces.InterfaceARoleConcret;
 import m1.configuration.interfaces.role.RoleEntreeConcret;
 import m1.configuration.interfaces.role.RoleSortieConcret;
-import m2.configuration.ObserveurdeTransit;
 import m2.configuration.connecteur.Connecteur;
 import m2.configuration.connecteur.TypeConnecteur;
 
@@ -14,7 +14,7 @@ public class SecurityQuery extends Connecteur {
 	
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
-	public SecurityQuery(ObserveurdeTransit obs) {
+	public SecurityQuery(ObserveurDeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueSecurityQuery(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
 		this.getFrom().getRoles().add(new RoleEntreeConcret("CallerDB"));//caller, requis

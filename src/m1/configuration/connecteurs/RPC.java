@@ -2,12 +2,12 @@ package m1.configuration.connecteurs;
 
 import java.util.logging.Logger;
 
+import m1.configuration.ObserveurDeTransit;
 import m1.configuration.connecteurs.glues.GlueRPC;
 import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.InterfaceARoleConcret;
 import m1.configuration.interfaces.role.RoleEntreeConcret;
 import m1.configuration.interfaces.role.RoleSortieConcret;
-import m2.configuration.ObserveurdeTransit;
 import m2.configuration.connecteur.Connecteur;
 import m2.configuration.connecteur.TypeConnecteur;
 import m2.configuration.interfaces.PointConnexion;
@@ -17,7 +17,7 @@ public class RPC extends Connecteur{
 
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
-	public RPC(ObserveurdeTransit obs) {
+	public RPC(ObserveurDeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueRPC(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
 		
 		this.getFrom().getRoles().add(new RoleEntreeConcret("EntreeRPCdeClient"));//called, requis
