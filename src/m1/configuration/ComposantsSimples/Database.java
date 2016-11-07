@@ -1,5 +1,7 @@
 package m1.configuration.ComposantsSimples;
 
+import java.util.logging.Logger;
+
 import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
@@ -8,6 +10,8 @@ import m2.configuration.composant.ComposantSimple;
 
 public class Database extends ComposantSimple {
 
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
+	
 	public Database(ObserveurdeTransit obs) {
 		super();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
@@ -33,7 +37,7 @@ public class Database extends ComposantSimple {
 			
 		case "Receive_SecurityManagementPort" : 
 			command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Database : les identifiants de connexion '" +command+ "' sont arrives dans le port Receive_SecurityManagementPort, verification de leur validite..." );
+			LOGGER.info("Database : les identifiants de connexion '" +command+ "' sont arrives dans le port Receive_SecurityManagementPort, verification de leur validite..." );
 			//Check DB et retour "vrai" ou "faux"
 			reponse = ReponseSecurite(command);
 			this.getSortie().getPoint("Send_SecurityManagementPort").setVal(reponse);
@@ -41,13 +45,13 @@ public class Database extends ComposantSimple {
 			
 		case "Receive_QueryIntPort" : 
 			command = this.getEntree().getPoint(p).getVal();
-			System.out.println("Database : la Query '" +command+ "' est arrivee dans le port Receive_QueryIntPort, execution..." );
+			LOGGER.info("Database : la Query '" +command+ "' est arrivee dans le port Receive_QueryIntPort, execution..." );
 			reponse = ReponseQuery(command);
 			this.getSortie().getPoint("Send_QueryIntPort").setVal(reponse);
 			break;
 			
 		default:
-			System.out.println("lancer not implemented for Serveur");
+			LOGGER.info("lancer not implemented for Serveur");
 			break;
 		}
 	}

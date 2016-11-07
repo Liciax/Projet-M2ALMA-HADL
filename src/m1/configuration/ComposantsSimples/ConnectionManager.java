@@ -1,5 +1,7 @@
 package m1.configuration.ComposantsSimples;
 
+import java.util.logging.Logger;
+
 import m1.configuration.interfaces.InterfaceAPortConcret;
 import m1.configuration.interfaces.port.PortEntreeConcret;
 import m1.configuration.interfaces.port.PortSortieConcret;
@@ -8,6 +10,8 @@ import m2.configuration.composant.ComposantSimple;
 
 public class ConnectionManager extends ComposantSimple {
 
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
+	
 	public ConnectionManager(ObserveurdeTransit obs) {
 		super();
 		this.setEntree(new InterfaceAPortConcret());//lui ajouter 1 ports vers RCP
@@ -47,18 +51,18 @@ public class ConnectionManager extends ComposantSimple {
 			
 		case "Receive_SecurityCheck" : 
 			command = this.getEntree().getPoint(p).getVal();
-			System.out.println("ConnectionManager : la reponse '" +command+ "' est arrivee dans le port Receive_SecurityCheck, elle doit donc etre envoyee vers le serveur" );
+			LOGGER.info("ConnectionManager : la reponse '" +command+ "' est arrivee dans le port Receive_SecurityCheck, elle doit donc etre envoyee vers le serveur" );
 			this.getSortie().getPoint("Send_ExternalSocket").setVal(command);
 			break;
 			
 		case "Receive_DBQuery" :
 			command = this.getEntree().getPoint(p).getVal();
-			System.out.println("ConnectionManager : la reponse '" +command+ "' est arrivee dans le port Receive_DBQuery, elle doit donc etre envoyee vers le serveur" );
+			LOGGER.info("ConnectionManager : la reponse '" +command+ "' est arrivee dans le port Receive_DBQuery, elle doit donc etre envoyee vers le serveur" );
 			this.getSortie().getPoint("Send_ExternalSocket").setVal(command);
 			break;
 			
 		default:
-			System.out.println("lancer not implemented for Serveur");
+			LOGGER.info("lancer not implemented for Serveur");
 			break;
 		}
 	}

@@ -1,5 +1,7 @@
 package m1.configuration.connecteurs;
 
+import java.util.logging.Logger;
+
 import m1.configuration.connecteurs.glues.GlueSQLRequest;
 import m1.configuration.interfaces.InterfaceARoleConcret;
 import m1.configuration.interfaces.role.RoleEntreeConcret;
@@ -9,6 +11,8 @@ import m2.configuration.connecteur.Connecteur;
 import m2.configuration.connecteur.TypeConnecteur;
 
 public class SQLRequest extends Connecteur {
+	
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public SQLRequest(ObserveurdeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueSQLRequest(), new InterfaceARoleConcret(), new InterfaceARoleConcret());
@@ -24,17 +28,17 @@ public class SQLRequest extends Connecteur {
 		String result = glue.traduit(from.getPoint(p));
 		switch (p) {
 		case "CallerConnec" :
-			System.out.println("SQLRequest : la commande '" +result+ "' est arrive dans le role CalledConnec du SQLRequest, elle doit donc etre traitee et envoye vers le port CallerDB" );
+			LOGGER.info("SQLRequest : la commande '" +result+ "' est arrive dans le role CalledConnec du SQLRequest, elle doit donc etre traitee et envoye vers le port CallerDB" );
 			this.getTo().getPoint("CalledDB").setVal(result);
 			break;
 
 		case "CallerDB" :
-			System.out.println("SQLRequest : la commande '" +result+ "' est arrive dans le role CalledDB du SQLRequest, elle doit donc etre traitee et envoye vers le role CallerConnec" );
+			LOGGER.info("SQLRequest : la commande '" +result+ "' est arrive dans le role CalledDB du SQLRequest, elle doit donc etre traitee et envoye vers le role CallerConnec" );
 			this.getTo().getPoint("CalledConnec").setVal(result);
 			break;
 			
 		default:
-			System.out.println("lancer not implemented for Connecteur");
+			LOGGER.info("lancer not implemented for Connecteur");
 			break;
 		}
 	}
