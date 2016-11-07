@@ -11,7 +11,8 @@ import m2.configuration.interfaces.PointConnexion;
 
 public abstract class Configuration implements ComposantAbstrait{
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
+	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
+	
 	protected HashMap<PointConnexion, PointConnexion> liaisons; //associe les sorties avec les entrées correspondantes
 	protected HashMap<PointConnexion, ComposantAbstrait> entrees; //pour un port/role donné, donne le ComposantAbstrait associe
 	protected List<ComposantAbstrait> listeComposants;
@@ -27,7 +28,7 @@ public abstract class Configuration implements ComposantAbstrait{
 	}
 	
 	public void notifier(PointConnexion p) {
-		LOGGER.info(System.getProperty("line.separator") + "************************************************************" + System.getProperty("line.separator") + "Configuration : " +p.getNom() + " souhaite envoyer un message. envoi du message au port correspondant: " + liaisons.get(p).getNom() + " et signalement au ComposantAbstrait correspondant" + System.getProperty("line.separator") + "************************************************************" );
+		LOGGER.info(System.getProperty("line.separator") + "************************************************************" + System.getProperty("line.separator") + "Configuration : " +p.getNom() + " souhaite envoyer un message. envoi du message au port correspondant: " + liaisons.get(p).getNom() + " et signalement au ComposantAbstrait correspondant : "+ entrees.get(liaisons.get(p)).getClass().getSimpleName() + System.getProperty("line.separator") + "************************************************************" );
 		liaisons.get(p).setVal(p.getVal());
 		entrees.get(liaisons.get(p)).lancer(liaisons.get(p).getNom());
 	}

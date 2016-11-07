@@ -2,6 +2,7 @@ package m2.configuration.composant;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import m1.configuration.interfaces.InterfaceAPortConcret;
 import m2.configuration.ComposantAbstrait;
@@ -13,6 +14,7 @@ public abstract class ComposantSimple implements ComposantAbstrait{
 		protected List<Propriete> proprietes;
 		protected InterfaceAPort entree;
 		protected InterfaceAPort sortie;
+		protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 		
 		public ComposantSimple() {
 			ct = new ArrayList<ContrainteTechnique>();

@@ -1,10 +1,13 @@
 package m2.configuration.interfaces;
 
+import java.util.logging.Logger;
+
 public abstract class PointConnexion {
 
 	protected String nom;
 	protected String val;
-
+	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
+	
 	
 	public PointConnexion(String nom) {
 		super();

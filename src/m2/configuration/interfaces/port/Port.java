@@ -1,5 +1,7 @@
 package m2.configuration.interfaces.port;
 
+import java.util.logging.Logger;
+
 import m2.configuration.ComposantAbstrait;
 import m2.configuration.interfaces.PointConnexion;
 

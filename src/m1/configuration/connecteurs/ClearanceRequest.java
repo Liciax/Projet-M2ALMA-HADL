@@ -12,7 +12,6 @@ import m2.configuration.connecteur.TypeConnecteur;
 
 public class ClearanceRequest extends Connecteur {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public ClearanceRequest(ObserveurdeTransit obs) {
 		super(TypeConnecteur.EXPLICITE, new GlueClearanceRequest(), new InterfaceARoleConcret(), new InterfaceARoleConcret());

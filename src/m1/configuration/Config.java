@@ -16,7 +16,6 @@ import m1.configuration.ServeurConfig;
 
 public class Config extends Configuration{
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public Config(ObserveurdeTransit o) {
 		super(o);
@@ -79,8 +78,8 @@ public class Config extends Configuration{
 		String command = null;
 		switch (p) {
 		case "EntreeConf" : 
-			LOGGER.info("Lien Binding : la commande " + command + "doit etre transferée vers le client");
 			command = this.getInterfConf().getPoint(p).getVal();
+			LOGGER.info("Lien Binding : la commande '" + command + "' doit etre transferée vers le client");
 			this.getInterfConf().getPoint("SortieConf").setVal(command);
 			break;
 			
@@ -101,10 +100,10 @@ public class Config extends Configuration{
 		Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 		Config conf = new Config(null);
 		conf.getInterfConf().getPoint("EntreeConf").setVal("Connexion:blabla");
-		String sepa = "        *          " + System.getProperty("line.separator");
+		String sepa = System.getProperty("line.separator") + "        ***" ;
 		conf.lancer("EntreeConf");
 		LOGGER.info(sepa + sepa + sepa +sepa);
-		conf.getInterfConf().getPoint("EntreeConf").setVal("Query:LOL");
+		conf.getInterfConf().getPoint("EntreeConf").setVal("Query:Select * from table where name = 'Bob'");
 		conf.lancer("EntreeConf");
 	}
 }

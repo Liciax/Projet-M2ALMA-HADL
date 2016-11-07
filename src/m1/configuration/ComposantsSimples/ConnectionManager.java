@@ -10,7 +10,6 @@ import m2.configuration.composant.ComposantSimple;
 
 public class ConnectionManager extends ComposantSimple {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public ConnectionManager(ObserveurdeTransit obs) {
 		super();

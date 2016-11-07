@@ -17,7 +17,6 @@ import m2.configuration.interfaces.PointConnexion;
 
 public class ServeurConfig extends Configuration {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public ServeurConfig(ObserveurdeTransit o) {
 		super(o);
@@ -104,8 +103,8 @@ public class ServeurConfig extends Configuration {
 		String command = null;
 		switch (p) {
 		case "EntreeConfServ" : 
-			LOGGER.info("Lien Binding : la commande " + command + "doit etre transferée vers le connectionManager");
 			command = this.getInterfConf().getPoint(p).getVal();
+			LOGGER.info("Lien Binding : la commande " + command + "doit etre transferée vers le connectionManager");
 			((ComposantSimple)this.getListeComposants().get(0)).getEntree().getPoint("Receive_ExternalSocket").setVal(command);
 			((ComposantSimple)this.getListeComposants().get(0)).lancer("Receive_ExternalSocket");
 			break;

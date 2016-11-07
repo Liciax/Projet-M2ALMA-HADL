@@ -6,7 +6,6 @@ import m2.configuration.interfaces.port.PortEntree;
 
 public class PortEntreeConcret extends PortEntree {
 
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);//permet gestion des affichages consoles
 	
 	public PortEntreeConcret(String nom) {
 		super(nom);
