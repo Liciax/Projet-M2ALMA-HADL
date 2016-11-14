@@ -60,7 +60,7 @@ public class SecurityManager extends ComposantSimple {
 		                                                                                       // a
 		                                                                                       // la
 		                                                                                       // DB
-		this.authorizedPasswords = new ArrayList<String>();
+		this.authorizedPasswords = new ArrayList<>();
 		authorizedPasswords.add("ccadd99b16cd3d200c22d6db45d8b6630ef3d936767127347ec8a76ab992c2ea");
 	}
 

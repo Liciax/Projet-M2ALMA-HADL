@@ -47,8 +47,6 @@ public abstract class PortSortie extends Port {
 
 	@Override
 	public void lancer(String p) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

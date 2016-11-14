@@ -47,7 +47,6 @@ public abstract class RoleSortie extends Role {
 
 	@Override
 	public void lancer(String p) {
-		// TODO Auto-generated method stub
 
 	}
 

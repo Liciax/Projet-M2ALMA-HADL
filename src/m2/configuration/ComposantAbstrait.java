@@ -6,6 +6,7 @@ package m2.configuration;
  * @author Alicia Boucard L'interface ComposantAbstrait permet d'avoir une
  *         généricité sur toutes les classes de notre architecture à composants.
  */
+@FunctionalInterface
 public interface ComposantAbstrait {
 
 	/**

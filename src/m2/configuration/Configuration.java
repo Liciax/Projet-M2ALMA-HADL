@@ -3,6 +3,7 @@ package m2.configuration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import m1.configuration.ObserveurDeTransit;
@@ -19,7 +20,7 @@ import m2.configuration.interfaces.PointConnexion;
 public abstract class Configuration implements ComposantAbstrait {
 
 	/* Permet la gestion des affichages consoles */
-	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	protected static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	/*
 	 * Associe les points de connexion de sortie d'un composant abstrait avec les
 	 * points de connexion d'entree d'un composant abstrait correspondants
@@ -40,9 +41,9 @@ public abstract class Configuration implements ComposantAbstrait {
 	 * @param obs Observeur
 	 */
 	public Configuration(ObserveurDeTransit obs) {
-		this.entrees = new HashMap<PointConnexion, ComposantAbstrait>();
-		this.liaisons = new HashMap<PointConnexion, PointConnexion>();
-		this.listeComposants = new ArrayList<ComposantAbstrait>();
+		this.entrees = new HashMap<>();
+		this.liaisons = new HashMap<>();
+		this.listeComposants = new ArrayList<>();
 	}
 
 	/**
@@ -70,7 +71,7 @@ public abstract class Configuration implements ComposantAbstrait {
 	 * 
 	 * @return la hashmap des liaisons
 	 */
-	public HashMap<PointConnexion, PointConnexion> getLiaisons() {
+	public Map<PointConnexion, PointConnexion> getLiaisons() {
 		return liaisons;
 	}
 
@@ -80,7 +81,7 @@ public abstract class Configuration implements ComposantAbstrait {
 	 * 
 	 * @return la hashmap des entrees
 	 */
-	public HashMap<PointConnexion, ComposantAbstrait> getEntrees() {
+	public Map<PointConnexion, ComposantAbstrait> getEntrees() {
 		return entrees;
 	}
 

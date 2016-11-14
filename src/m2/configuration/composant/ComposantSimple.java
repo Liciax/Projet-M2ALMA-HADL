@@ -20,14 +20,14 @@ public abstract class ComposantSimple implements ComposantAbstrait {
 	protected List<Propriete> proprietes;
 	protected InterfaceAPort entree;
 	protected InterfaceAPort sortie;
-	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //permet gestion des affichages consoles
+	protected static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //permet gestion des affichages consoles
 
 	/**
 	 * Constructeur de ComposantSimple, cree les listes.
 	 */
 	public ComposantSimple() {
-		ct = new ArrayList<ContrainteTechnique>();
-		proprietes = new ArrayList<Propriete>();
+		ct = new ArrayList<>();
+		proprietes = new ArrayList<>();
 	}
 	
 	/**
@@ -36,11 +36,7 @@ public abstract class ComposantSimple implements ComposantAbstrait {
 	 * @param p une simple string
 	 */
 	public void lancer(String p) {
-		switch (p) {
-		default:
-			LOGGER.severe("lancer not implemented for ComposantSimple");
-			break;
-		}
+		LOGGER.severe("lancer not implemented for ComposantSimple");
 	}
 
 	/**

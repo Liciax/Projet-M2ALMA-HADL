@@ -19,7 +19,7 @@ public abstract class Connecteur implements ComposantAbstrait{
 	protected Glue glue;
 	protected InterfaceARole from;
 	protected InterfaceARole to;
-	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //permet gestion des affichages consoles
+	protected static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //permet gestion des affichages consoles
 	
 	/**
 	 * Constructeur de Connecteur
@@ -34,11 +34,7 @@ public abstract class Connecteur implements ComposantAbstrait{
 
 	@Override
 	public void lancer(String p){
-		switch (p) {
-		default:
-			LOGGER.severe("lancer not implemented for Connecteur");
-			break;
-		}
+		LOGGER.severe("lancer not implemented for Connecteur");
 	}
 
 	/**

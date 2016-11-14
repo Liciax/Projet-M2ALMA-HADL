@@ -13,7 +13,7 @@ public abstract class PointConnexion {
 	protected String nom;
 	protected String val;
 
-	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //permet gestion des affichages consoles
+	protected static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //permet gestion des affichages consoles
 	
 	/**
 	 * Constructeur de PointConnexion

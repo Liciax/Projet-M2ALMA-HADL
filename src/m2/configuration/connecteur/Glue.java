@@ -14,7 +14,7 @@ import m2.configuration.interfaces.PointConnexion;
 public abstract class Glue {
 
 	// permet la gestion des affichages consoles
-	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	protected static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	/**
 	 * Methode permettant de traduire les donnee de p pour etre lisible par le composant suivant
