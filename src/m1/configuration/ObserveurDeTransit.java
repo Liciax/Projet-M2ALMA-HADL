@@ -6,26 +6,28 @@ import m2.configuration.interfaces.PointConnexion;
 /**
  * 
  * @author Lenny Lucas
- * @author Alicia Boucard
- * Classe Observeur permet d'observer le comportement des composants 
+ * @author Alicia Boucard 
+ * Classe Observeur permet d'observer le comportement des composants
  */
 public class ObserveurDeTransit {
-	
+
 	private Configuration configObservant;
 
 	/**
 	 * Constructeur de ObserveurDeTransit
-	 * @param configObservant Configuration 
+	 * 
+	 * @param configObservant Configuration
 	 */
 	public ObserveurDeTransit(Configuration configObservant) {
 		super();
 		this.configObservant = configObservant;
 	}
-	
+
 	/**
-	 * Methode qui permet d'informer a un composant que un de ses points de connexion est rempli et qu'il doit donc
-	 * effectuer une action.
-	 * @param p un point de connexion 
+	 * Methode qui permet d'informer a un composant que un de ses points de
+	 * connexion est rempli et qu'il doit donc effectuer une action.
+	 * 
+	 * @param p un point de connexion
 	 */
 	public void notifier(PointConnexion p) {
 		configObservant.notifier(p);
@@ -33,6 +35,7 @@ public class ObserveurDeTransit {
 
 	/**
 	 * Accesseur de la configuration observante.
+	 * 
 	 * @return la configuration observante
 	 */
 	public Configuration getConfigObservant() {
@@ -41,6 +44,7 @@ public class ObserveurDeTransit {
 
 	/**
 	 * Mutateur de la configuration observante
+	 * 
 	 * @param configObservant la configuration observante
 	 */
 	public void setConfigObservant(Configuration configObservant) {

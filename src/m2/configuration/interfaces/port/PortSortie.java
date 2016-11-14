@@ -5,7 +5,7 @@ import m1.configuration.ObserveurDeTransit;
 public abstract class PortSortie extends Port {
 
 	private ObserveurDeTransit obs;
-	
+
 	public PortSortie(String nom, ObserveurDeTransit o) {
 		super(nom);
 		this.obs = o;
@@ -26,7 +26,7 @@ public abstract class PortSortie extends Port {
 	@Override
 	public void lancer(String p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

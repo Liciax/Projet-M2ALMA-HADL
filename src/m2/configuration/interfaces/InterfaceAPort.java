@@ -17,12 +17,12 @@ public abstract class InterfaceAPort extends Interface {
 	@Override
 	public void lancer(String p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public PointConnexion getPoint(String nom) {
 		for (Port port : ports) {
-			if(port.getNom().equals(nom)){
+			if (port.getNom().equals(nom)) {
 				return port;
 			}
 		}

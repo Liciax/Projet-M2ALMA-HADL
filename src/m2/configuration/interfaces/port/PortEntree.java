@@ -9,7 +9,7 @@ public abstract class PortEntree extends Port {
 	@Override
 	public void lancer(String p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

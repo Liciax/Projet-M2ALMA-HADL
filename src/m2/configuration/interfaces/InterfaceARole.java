@@ -15,12 +15,12 @@ public abstract class InterfaceARole extends Interface {
 	@Override
 	public void lancer(String p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public PointConnexion getPoint(String nom) {
 		for (Role role : roles) {
-			if(role.getNom().equals(nom)){
+			if (role.getNom().equals(nom)) {
 				return role;
 			}
 		}
