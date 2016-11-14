@@ -17,8 +17,8 @@ public abstract class Glue {
 	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	/**
-	 * 
-	 * @param p un point
+	 * Methode permettant de traduire les donnee de p pour etre lisible par le composant suivant
+	 * @param p un point de connexion
 	 * @return la valeur contenu dans le role
 	 */
 	public abstract String traduit(PointConnexion p);

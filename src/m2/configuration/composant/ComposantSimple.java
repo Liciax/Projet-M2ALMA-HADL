@@ -10,9 +10,9 @@ import m2.configuration.interfaces.InterfaceAPort;
 /**
  * 
  * @author Lenny Lucas
- * @author Alicia Boucard La classe abstraite ComposantSimple represente un
- *         composant simple du metamodele qui contient une interface entree,une
- *         nterface sortie, des proprietes et des contraintes techniques.
+ * @author Alicia Boucard
+ * La classe abstraite ComposantSimple represente un composant simple du metamodele qui contient une interface entree, une interface sortie,
+ * des proprietes et des contraintes techniques. 
  */
 public abstract class ComposantSimple implements ComposantAbstrait {
 
@@ -20,11 +20,7 @@ public abstract class ComposantSimple implements ComposantAbstrait {
 	protected List<Propriete> proprietes;
 	protected InterfaceAPort entree;
 	protected InterfaceAPort sortie;
-	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);// permet
-	                                                                                   // gestion
-	                                                                                   // des
-	                                                                                   // affichages
-	                                                                                   // consoles
+	protected final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME); //permet gestion des affichages consoles
 
 	/**
 	 * Constructeur de ComposantSimple, cree les listes.
@@ -33,7 +29,7 @@ public abstract class ComposantSimple implements ComposantAbstrait {
 		ct = new ArrayList<ContrainteTechnique>();
 		proprietes = new ArrayList<Propriete>();
 	}
-
+	
 	/**
 	 * Methode lancer non implemente dans composant simple.
 	 * 
@@ -42,7 +38,7 @@ public abstract class ComposantSimple implements ComposantAbstrait {
 	public void lancer(String p) {
 		switch (p) {
 		default:
-			System.out.println("lancer not implemented for ComposantSimple");
+			LOGGER.severe("lancer not implemented for ComposantSimple");
 			break;
 		}
 	}
