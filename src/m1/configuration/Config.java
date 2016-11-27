@@ -121,17 +121,4 @@ public class Config extends Configuration {
 		}
 	}
 
-	public static void main(String[] args) {
-		Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);// permet
-		                                                            // gestion des
-		                                                            // affichages
-		                                                            // consoles
-		Config conf = new Config(null);
-		conf.getInterfaceConfiguration().getPoint("EntreeConf").setVal("Connexion:blabla");
-		String sepa = System.getProperty("line.separator") + "        ***";
-		conf.lancer("EntreeConf");
-		LOGGER.info(sepa + sepa + sepa + sepa);
-		conf.getInterfaceConfiguration().getPoint("EntreeConf").setVal("Query:Select * from table where name = 'Bob'");
-		conf.lancer("EntreeConf");
-	}
 }
