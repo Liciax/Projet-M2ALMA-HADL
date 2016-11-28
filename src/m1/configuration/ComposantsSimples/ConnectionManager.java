@@ -68,10 +68,12 @@ public class ConnectionManager extends ComposantSimple {
 		String value = message.split(":")[1];
 		switch (type) {
 		case "Connexion":
+			LOGGER.info("Le message est interprete comme une demande de connexion");
 			this.getSortie().getPoint("Send_SecurityCheck").setVal(value);
 			break;
 
 		case "Query":
+			LOGGER.info("Le message est interprete comme requete");
 			this.getSortie().getPoint("Send_DBQuery").setVal(value);
 			break;
 

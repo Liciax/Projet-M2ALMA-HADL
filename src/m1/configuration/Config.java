@@ -101,8 +101,8 @@ public class Config extends Configuration {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see m2.configuration.Configuration#lancer(java.lang.String)
+	/*
+	 * @see m2.configuration.ComposantAbstrait#lancer(java.lang.String)
 	 */
 	public void lancer(String p) {
 		switch (p) {
